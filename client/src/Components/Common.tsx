@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { SupportedLocales, t } from "../Translate/translate";
 
 export function stringSort(a: string, b: string): number {
@@ -98,4 +98,13 @@ export function valueRender(text: number, before: any, rawNumber: boolean, rever
         )
       : null}
   </>;
+}
+
+export function useTitle(titleOrFn:any, ...deps:any) {
+  useEffect(
+    () => {
+      document.title = (titleOrFn===function(){}) ? titleOrFn() : titleOrFn;
+    },
+    [...deps]
+  );
 }

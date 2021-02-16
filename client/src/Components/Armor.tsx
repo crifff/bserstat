@@ -4,7 +4,8 @@ import '../index.css';
 import axios from "axios";
 import { SupportedLocales, t } from "../Translate/translate";
 import RankTable from "./RankTable";
-import { stringSort, valueRender } from "./Common";
+import { stringSort, useTitle, valueRender } from "./Common";
+import { useParams } from "react-router-dom";
 
 
 interface Row {
@@ -84,6 +85,17 @@ function Armor(prop: UserProp) {
   const [json, setJson] = useState({TypeList: []});
   const [beforeJson, setBeforeJson] = useState({TypeList: []});
 
+  let {tier} = useParams<{
+    tier: string
+  }>();
+
+  let title = "Armor(All)"
+  if (tier === "high") {
+    title = "Armor(High Tier)"
+  }
+
+  useTitle(t(title, prop.lang) + " | BSER Stat", tier);
+
   function fetchUserRankJson(tier: string, label: string, isBefore = false) {
     if (label === "") {
       return
@@ -111,9 +123,9 @@ function Armor(prop: UserProp) {
 
   useEffect(() => {
     // console.log("effect:", prop)
-    fetchUserRankJson(prop.tier, prop.label);
+    fetchUserRankJson(tier, prop.label);
     if (prop.before !== "") {
-      fetchUserRankJson(prop.tier, prop.before, true);
+      fetchUserRankJson(tier, prop.before, true);
     }
   }, [prop]);
 
@@ -130,16 +142,16 @@ function Armor(prop: UserProp) {
           return el.Name === record.armorTypeName
         })
         if (tmp1 !== undefined) {
-          console.log("tmp1: ", tmp1, record.armorName)
+          // console.log("tmp1: ", tmp1, record.armorName)
           const tmp2: any = tmp1.ArmorList.find((el: any) => {
             return el.Name === record.armorName
           })
           if (tmp2 !== undefined) {
-            console.log("tmp2: ", tmp2)
+            // console.log("tmp2: ", tmp2)
             const tmp3: any = tmp2.ModeList.find((el: any) => {
               return el.Mode === mode
             })
-            console.log("tmp3: ", tmp3)
+            // console.log("tmp3: ", tmp3)
 
             if (tmp3.hasOwnProperty(column)) {
               // console.log("winrate: ", tmp3[column])
@@ -150,11 +162,6 @@ function Armor(prop: UserProp) {
       }
       return valueRender(text, before, isRawNumber, isReverseColor);
     }
-  }
-
-  let title = "Armor(All)"
-  if (prop.tier === "high") {
-    title = "Armor(High Tier)"
   }
 
 

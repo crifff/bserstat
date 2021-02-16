@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import 'antd/dist/antd.css';
 import './index.css';
 import './App.css';
@@ -9,7 +9,7 @@ import { SupportedLocales, t } from "./Translate/translate";
 
 import { Col, Layout, Menu, Radio, RadioChangeEvent, Row } from 'antd';
 import axios from "axios";
-import { BrowserRouter as Router, Link, Redirect, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Link, Redirect, Route, Switch, useHistory } from "react-router-dom";
 
 const {Content} = Layout;
 
@@ -68,10 +68,11 @@ function App() {
       })
   }
 
-  useEffect(() => {
-    // キャッシュが強烈に残るので一旦fetchで取らずininialDataに書く
-    // fetchUserRankJson();
-  }, []);
+
+  // useEffect(() => {
+  //   // キャッシュが強烈に残るので一旦fetchで取らずininialDataに書く
+  //   // fetchUserRankJson();
+  // }, []);
 
   function handleMenuClick(e: any) {
     let [category, tier] = e.key.split("_")
@@ -103,17 +104,19 @@ function App() {
   if (data.length > current.index + 1) {
     beforeLabel = data[current.index + 1].label;
   }
-  return <Router><Layout>
-    <Content>
-      <Row wrap={false} align={"middle"} style={{backgroundColor: "#fff"}}>
-        <Col flex="none">
-          <Menu onClick={handleMenuClick} selectedKeys={[current.key()]} mode="horizontal">
-            <Menu.Item key="character_all">
-              <Link to="/character/all">
-                {t('Character(All)', lang)}
-              </Link>
-            </Menu.Item>
-            <Menu.Item key="character_high">
+  return <Router>
+    <InnerComponent>
+      <Layout>
+        <Content>
+          <Row wrap={false} align={"middle"} style={{backgroundColor: "#fff"}}>
+            <Col flex="none">
+              <Menu onClick={handleMenuClick} selectedKeys={[current.key()]} mode="horizontal">
+                <Menu.Item key="character_all">
+                  <Link to="/character/all">
+                    {t('Character(All)', lang)}
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="character_high">
               <Link to="/character/high">
                 {t('Character(High Tier)', lang)}
               </Link>
@@ -164,9 +167,26 @@ function App() {
                  updated={updated} before={beforeLabel}/>
         </Route>
       </Switch>
-    </Content>
-  </Layout></Router>
+        </Content>
+      </Layout>
+    </InnerComponent>
+  </Router>
     ;
+}
+
+const InnerComponent: FC = ({children}) => {
+  const {listen} = useHistory()
+
+  useEffect(() => {
+    return listen((location) => {
+      if (!window.gtag) return
+      const trackingId = "G-79BB61VQB3"
+      window.gtag('config', trackingId, {page_path: location.pathname})
+    })
+  }, [listen])
+
+
+  return <>{children}</>
 }
 
 export default App

@@ -5,7 +5,7 @@ import axios from "axios";
 import { SupportedLocales, t } from "../Translate/translate";
 import { useParams } from "react-router-dom";
 import RankTable from "./RankTable";
-import { stringSort, valueRender } from "./Common";
+import { stringSort, useTitle, valueRender } from "./Common";
 
 interface Row {
   characterName: string;
@@ -106,6 +106,13 @@ function User(prop: UserProp) {
     tier: string
   }>();
 
+  let title = "Character(All)"
+  if (tier === "high") {
+    title = "Character(High Tier)"
+  }
+
+  useTitle(t(title, prop.lang) + " | BSER Stat", tier);
+
   function fetchUserRankJson(tier: string, label: string, isBefore = false) {
     if (label === "") {
       return
@@ -174,10 +181,6 @@ function User(prop: UserProp) {
   }
 
 
-  let title = "Character(All)"
-  if (tier === "high") {
-    title = "Character(High Tier)"
-  }
 
   interface FilterSet {
     text: string;

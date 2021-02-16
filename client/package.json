@@ -44,6 +44,7 @@
     ]
   },
   "devDependencies": {
+    "@types/gtag.js": "^0.0.4",
     "@types/react-router-dom": "^5.1.7"
   }
 }

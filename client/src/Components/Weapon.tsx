@@ -4,7 +4,8 @@ import '../index.css';
 import axios from "axios";
 import { SupportedLocales, t } from "../Translate/translate";
 import RankTable from "./RankTable";
-import { stringSort, valueRender } from "./Common";
+import { stringSort, useTitle, valueRender } from "./Common";
+import { useParams } from "react-router-dom";
 
 
 interface Row {
@@ -92,6 +93,17 @@ function Weapon(prop: UserProp) {
   const [json, setJson] = useState({CharacterList: []});
   const [beforeJson, setBeforeJson] = useState({CharacterList: []});
 
+  let {tier} = useParams<{
+    tier: string
+  }>();
+
+  let title = "Weapon(All)"
+  if (tier === "high") {
+    title = "Weapon(High Tier)"
+  }
+
+  useTitle(t(title, prop.lang) + " | BSER Stat", tier);
+  
   function fetchUserRankJson(tier: string, label: string, isBefore = false) {
     if (label === "") {
       return
@@ -119,9 +131,9 @@ function Weapon(prop: UserProp) {
 
   useEffect(() => {
     // console.log("effect:", prop)
-    fetchUserRankJson(prop.tier, prop.label);
+    fetchUserRankJson(tier, prop.label);
     if (prop.before !== "") {
-      fetchUserRankJson(prop.tier, prop.before, true);
+      fetchUserRankJson(tier, prop.before, true);
     }
   }, [prop]);
 
@@ -215,10 +227,6 @@ function Weapon(prop: UserProp) {
     }, []);
   }
 
-  let title = "Weapon(All)"
-  if (prop.tier === "high") {
-    title = "Weapon(High Tier)"
-  }
   const columns = [
     {
       title: "",
