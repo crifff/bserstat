@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import 'antd/dist/antd.css';
 import '../index.css';
 import axios from "axios";
-import { t } from "../Translate/translate";
+import { SupportedLocales, t } from "../Translate/translate";
 import RankTable from "./RankTable";
 import { stringSort, valueRender } from "./Common";
 
@@ -85,7 +85,7 @@ interface UserProp {
   period: string
   label: string
   before: string
-  lang: string
+  lang: SupportedLocales
 }
 
 function Weapon(prop: UserProp) {
@@ -164,7 +164,7 @@ function Weapon(prop: UserProp) {
     value: string
   }
 
-  function characterFilter(json: { CharacterList: any[] }, lang: string) {
+  function characterFilter(json: { CharacterList: any[] }, lang: SupportedLocales) {
     let uniqueCharaList: FilterSet[] = []
 
     // console.log(data)
@@ -177,7 +177,7 @@ function Weapon(prop: UserProp) {
     return uniqueCharaList;
   }
 
-  function weaponTypeFilter(json: { CharacterList: any[] }, lang: string) {
+  function weaponTypeFilter(json: { CharacterList: any[] }, lang: SupportedLocales) {
     let uniqueWeaponTypeList: FilterSet[] = []
     json.CharacterList.forEach((chara: any) => {
       if (chara.WeaponTypeList === null) {
@@ -195,7 +195,7 @@ function Weapon(prop: UserProp) {
     }, []);
   }
 
-  function weaponFilter(json: { CharacterList: any[] }, lang: string) {
+  function weaponFilter(json: { CharacterList: any[] }, lang: SupportedLocales) {
     let uniqueWeaponList: FilterSet[] = []
     json.CharacterList.forEach((chara: any) => {
       if (chara.WeaponTypeList === null) {

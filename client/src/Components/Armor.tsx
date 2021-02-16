@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import 'antd/dist/antd.css';
 import '../index.css';
 import axios from "axios";
-import { t } from "../Translate/translate";
+import { SupportedLocales, t } from "../Translate/translate";
 import RankTable from "./RankTable";
 import { stringSort, valueRender } from "./Common";
 
@@ -77,7 +77,7 @@ interface UserProp {
   period: string
   label: string
   before: string
-  lang: string
+  lang: SupportedLocales
 }
 
 function Armor(prop: UserProp) {
@@ -163,7 +163,7 @@ function Armor(prop: UserProp) {
     value: string
   }
 
-  function ArmorTypeFilter(json: { TypeList: any[] }, lang: string) {
+  function ArmorTypeFilter(json: { TypeList: any[] }, lang: SupportedLocales) {
     let uniqueArmorTypeList: FilterSet[] = []
     json.TypeList.forEach((armorType: any) => {
       if (armorType.Name === "") {
@@ -174,7 +174,7 @@ function Armor(prop: UserProp) {
     return uniqueArmorTypeList;
   }
 
-  function ArmorFilter(json: { TypeList: any[] }, lang: string) {
+  function ArmorFilter(json: { TypeList: any[] }, lang: SupportedLocales) {
     let uniqueArmorList: FilterSet[] = []
     json.TypeList.forEach((armorType: any) => {
       if (armorType.WeaponTypeList === null) {
@@ -210,7 +210,7 @@ function Armor(prop: UserProp) {
           title: t('Armor', prop.lang),
           dataIndex: 'armorName',
           sorter: (a: Row, b: Row) => stringSort(a.armorName, b.armorName),
-          filters: ArmorFilter(json,prop.lang),
+          filters: ArmorFilter(json, prop.lang),
           onFilter: (value: any, record: any) => {
             if (record.armorTypeName === "Base Win Rate") {
               return true
