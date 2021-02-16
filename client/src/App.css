@@ -1,0 +1,20 @@
+.border-left {
+    border-left: solid 3px #f0f0f0;
+}
+
+.row-base-win-rate {
+    background-color: #ffffb8;
+}
+
+.row-base-win-rate .ant-table-column-sort {
+    background-color: #fffb8f;
+
+}
+
+.ant-table-thead th {
+    position: -webkit-sticky;
+    position: sticky !important;
+    white-space: nowrap;
+    top: 0;
+    z-index: 100;
+}
