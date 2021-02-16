@@ -100,11 +100,14 @@ export function valueRender(text: number, before: any, rawNumber: boolean, rever
   </>;
 }
 
-export function useTitle(titleOrFn:any, ...deps:any) {
+type TitleOrGetter = string | (() => string);
+
+export function useTitle(titleOrFn: TitleOrGetter, ...deps: React.DependencyList) {
+  const title = typeof titleOrFn === 'string' ? titleOrFn : titleOrFn();
   useEffect(
     () => {
-      document.title = (titleOrFn===function(){}) ? titleOrFn() : titleOrFn;
+      document.title = title;
     },
-    [...deps]
+    [title, ...deps]
   );
 }

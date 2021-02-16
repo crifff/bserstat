@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import 'antd/dist/antd.css';
 import '../index.css';
 import axios from "axios";
-import { SupportedLocales, t } from "../Translate/translate";
 import { useParams } from "react-router-dom";
 import RankTable from "./RankTable";
 import { stringSort, useTitle, valueRender } from "./Common";
+import { useTranslate } from '../Translate/hook';
 
 interface Row {
   characterName: string;
@@ -94,11 +94,11 @@ interface UserProp {
   period: string
   label: string
   before: string
-  lang: SupportedLocales
 }
 
 
 function User(prop: UserProp) {
+  const {t} = useTranslate();
   const [json, setJson] = useState({CharacterList: []});
   const [beforeJson, setBeforeJson] = useState({CharacterList: []});
 
@@ -111,7 +111,7 @@ function User(prop: UserProp) {
     title = "Character(High Tier)"
   }
 
-  useTitle(t(title, prop.lang) + " | BSER Stat", tier);
+  useTitle(t(title) + " | BSER Stat", tier);
 
   function fetchUserRankJson(tier: string, label: string, isBefore = false) {
     if (label === "") {
@@ -147,7 +147,7 @@ function User(prop: UserProp) {
   }, [prop]);
 
   function textCell(text: string, record: any): any {
-    return t(text, prop.lang)
+    return t(text)
   }
 
   function valueCell(mode: string, column: string, isRawNumber = false, isReverseColor = false): (text: number, record: any) => any {
@@ -187,25 +187,25 @@ function User(prop: UserProp) {
     value: string
   }
 
-  function characterFilter(json: { CharacterList: any[] }, lang: SupportedLocales) {
+  function characterFilter(json: { CharacterList: any[] }) {
     let uniqueCharaList: FilterSet[] = []
     json.CharacterList.forEach((chara: any) => {
       if (chara.Name === "") {
         return
       }
-      uniqueCharaList.push({text: t(chara.Name, lang), value: chara.Name})
+      uniqueCharaList.push({text: t(chara.Name), value: chara.Name})
     })
     return uniqueCharaList;
   }
 
-  function weaponTypeFilter(json: { CharacterList: any[] }, lang: SupportedLocales) {
+  function weaponTypeFilter(json: { CharacterList: any[] }) {
     let uniqueWeaponTypeList: FilterSet[] = []
     json.CharacterList.forEach((chara: any) => {
       if (chara.WeaponTypeList === null) {
         return
       }
       chara.RankWeaponList.forEach((weapon: any) => {
-        uniqueWeaponTypeList.push({text: t(weapon.Name, lang), value: weapon.Name})
+        uniqueWeaponTypeList.push({text: t(weapon.Name), value: weapon.Name})
       })
     })
     return uniqueWeaponTypeList.reduce<FilterSet[]>((a, v) => {
@@ -221,10 +221,10 @@ function User(prop: UserProp) {
       title: "",
       children: [
         {
-          title: t('Character', prop.lang),
+          title: t('Character'),
           dataIndex: 'characterName',
           sorter: (a: Row, b: Row) => stringSort(a.characterName, b.characterName),
-          filters: characterFilter(json, prop.lang),
+          filters: characterFilter(json),
           onFilter: (value: any, record: any) => {
             if (record.characterName === "Base Win Rate") {
               return true
@@ -235,10 +235,10 @@ function User(prop: UserProp) {
           render: textCell,
         },
         {
-          title: t('Weapon', prop.lang),
+          title: t('Weapon'),
           dataIndex: 'weaponName',
           sorter: (a: Row, b: Row) => stringSort(a.weaponName, b.weaponName),
-          filters: weaponTypeFilter(json, prop.lang),
+          filters: weaponTypeFilter(json),
           onFilter: (value: any, record: any) => {
             if (record.characterName === "Base Win Rate") {
               return true
@@ -251,12 +251,12 @@ function User(prop: UserProp) {
       ]
     },
     {
-      title: t("Solo", prop.lang),
+      title: t("Solo"),
       className: "border-left",
       style: {borderLeft: "solid #000 2px", backgroundColor: "black !important"},
       children: [
         {
-          title: t('Win Rate', prop.lang),
+          title: t('Win Rate'),
           dataIndex: 'soloWinRate',
           align: "right",
           className: "border-left",
@@ -265,21 +265,21 @@ function User(prop: UserProp) {
 
         },
         {
-          title: t('Pick Rate', prop.lang),
+          title: t('Pick Rate'),
           dataIndex: 'soloPickRate',
           align: "right",
           render: valueCell("Solo", "PickRate"),
           sorter: (a: Row, b: Row) => a.soloPickRate - b.soloPickRate,
         },
         {
-          title: t('Player Kill', prop.lang),
+          title: t('Player Kill'),
           dataIndex: 'soloPlayerKill',
           align: "right",
           render: valueCell("Solo", "PlayerKill", true),
           sorter: (a: Row, b: Row) => a.soloPlayerKill - b.soloPlayerKill,
         },
         {
-          title: t('Average Rank', prop.lang),
+          title: t('Average Rank'),
           dataIndex: 'soloAverageRank',
           align: "right",
           render: valueCell("Solo", "AverageRank", true, true),
@@ -288,11 +288,11 @@ function User(prop: UserProp) {
       ]
     },
     {
-      title: t("Duo", prop.lang),
+      title: t("Duo"),
       className: "border-left",
       children: [
         {
-          title: t('Win Rate', prop.lang),
+          title: t('Win Rate'),
           dataIndex: 'duoWinRate',
           align: "right",
           className: "border-left",
@@ -301,21 +301,21 @@ function User(prop: UserProp) {
 
         },
         {
-          title: t('Pick Rate', prop.lang),
+          title: t('Pick Rate'),
           dataIndex: 'duoPickRate',
           align: "right",
           render: valueCell("Duo", "PickRate"),
           sorter: (a: Row, b: Row) => a.duoPickRate - b.duoPickRate,
         },
         {
-          title: t('Player Kill', prop.lang),
+          title: t('Player Kill'),
           dataIndex: 'duoPlayerKill',
           align: "right",
           render: valueCell("Duo", "PlayerKill", true),
           sorter: (a: Row, b: Row) => a.duoPlayerKill - b.duoPlayerKill,
         },
         {
-          title: t('Average Rank', prop.lang),
+          title: t('Average Rank'),
           dataIndex: 'duoAverageRank',
           align: "right",
           render: valueCell("Duo", "AverageRank", true, true),
@@ -324,11 +324,11 @@ function User(prop: UserProp) {
       ]
     },
     {
-      title: t("Squad", prop.lang),
+      title: t("Squad"),
       className: "border-left",
       children: [
         {
-          title: t('Win Rate', prop.lang),
+          title: t('Win Rate'),
           dataIndex: 'squadWinRate',
           align: "right",
           className: "border-left",
@@ -337,21 +337,21 @@ function User(prop: UserProp) {
 
         },
         {
-          title: t('Pick Rate', prop.lang),
+          title: t('Pick Rate'),
           dataIndex: 'squadPickRate',
           align: "right",
           render: valueCell("Squad", "PickRate"),
           sorter: (a: Row, b: Row) => a.squadPickRate - b.squadPickRate,
         },
         {
-          title: t('Player Kill', prop.lang),
+          title: t('Player Kill'),
           dataIndex: 'squadPlayerKill',
           align: "right",
           render: valueCell("Squad", "PlayerKill", true),
           sorter: (a: Row, b: Row) => a.squadPlayerKill - b.squadPlayerKill,
         },
         {
-          title: t('Average Rank', prop.lang),
+          title: t('Average Rank'),
           dataIndex: 'squadAverageRank',
           align: "right",
           render: valueCell("Squad", "AverageRank", true, true),
