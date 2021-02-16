@@ -62,9 +62,9 @@ function makeData(data: any): Row[] {
     if (armorType.ArmorList === null) {
       return
     }
-    armorType.ArmorList.forEach((amor: any) => {
+    armorType.ArmorList.forEach((armor: any) => {
 
-      let d = extracted(armorType, amor);
+      let d = extracted(armorType, armor);
       result.push(d)
 
     })
@@ -77,13 +77,13 @@ interface UserProp {
   updated: string
   period: string
   label: string
-  before: string
+  old: string
 }
 
 function Armor(prop: UserProp) {
   const {t} = useTranslate();
   const [json, setJson] = useState({TypeList: []});
-  const [beforeJson, setBeforeJson] = useState({TypeList: []});
+  const [oldJson, setOldJson] = useState({TypeList: []});
 
   let {tier} = useParams<{
     tier: string
@@ -96,7 +96,7 @@ function Armor(prop: UserProp) {
 
   useTitle(t(title) + " | BSER Stat", tier);
 
-  function fetchUserRankJson(tier: string, label: string, isBefore = false) {
+  function fetchUserRankJson(tier: string, label: string, isOld = false) {
     if (label === "") {
       return
     }
@@ -109,8 +109,8 @@ function Armor(prop: UserProp) {
     }
     axios.get<any>(url)
       .then((response: any) => {
-        if (isBefore) {
-          setBeforeJson(response.data)
+        if (isOld) {
+          setOldJson(response.data)
         }else {
           setJson(response.data)
         }
@@ -124,8 +124,8 @@ function Armor(prop: UserProp) {
   useEffect(() => {
     // console.log("effect:", prop)
     fetchUserRankJson(tier, prop.label);
-    if (prop.before !== "") {
-      fetchUserRankJson(tier, prop.before, true);
+    if (prop.old !== "") {
+      fetchUserRankJson(tier, prop.old, true);
     }
   }, [prop]);
 
@@ -136,9 +136,9 @@ function Armor(prop: UserProp) {
   function valueCell(mode: string, column: string, isRawNumber = false, isReverseColor = false): (text: number, record: any) => any {
     return function (text: number, record: any): any {
       // console.log(record.armorTypeName, record.armorName, column)
-      let before: any = null
-      if (beforeJson.TypeList.length !== 0) {
-        const tmp1: any = beforeJson.TypeList.find((el: any) => {
+      let old: any = null
+      if (oldJson.TypeList.length !== 0) {
+        const tmp1: any = oldJson.TypeList.find((el: any) => {
           return el.Name === record.armorTypeName
         })
         if (tmp1 !== undefined) {
@@ -155,12 +155,12 @@ function Armor(prop: UserProp) {
 
             if (tmp3.hasOwnProperty(column)) {
               // console.log("winrate: ", tmp3[column])
-              before = tmp3[column]
+              old = tmp3[column]
             }
           }
         }
       }
-      return valueRender(text, before, isRawNumber, isReverseColor);
+      return valueRender(text, old, isRawNumber, isReverseColor);
     }
   }
 

@@ -85,13 +85,13 @@ interface Props {
   updated: string
   period: string
   label: string
-  before: string
+  old: string
 }
 
 function Weapon(prop: Props) {
   const {t} = useTranslate();
   const [json, setJson] = useState({CharacterList: []});
-  const [beforeJson, setBeforeJson] = useState({CharacterList: []});
+  const [oldJson, setOldJson] = useState({CharacterList: []});
 
   let {tier} = useParams<{
     tier: string
@@ -104,7 +104,7 @@ function Weapon(prop: Props) {
 
   useTitle(t(title) + " | BSER Stat", tier);
   
-  function fetchUserRankJson(tier: string, label: string, isBefore = false) {
+  function fetchUserRankJson(tier: string, label: string, isOld = false) {
     if (label === "") {
       return
     }
@@ -117,8 +117,8 @@ function Weapon(prop: Props) {
     }
     axios.get<any>(url)
       .then((response: any) => {
-        if (isBefore) {
-          setBeforeJson(response.data)
+        if (isOld) {
+          setOldJson(response.data)
         }else {
           setJson(response.data)
         }
@@ -132,8 +132,8 @@ function Weapon(prop: Props) {
   useEffect(() => {
     // console.log("effect:", prop)
     fetchUserRankJson(tier, prop.label);
-    if (prop.before !== "") {
-      fetchUserRankJson(tier, prop.before, true);
+    if (prop.old !== "") {
+      fetchUserRankJson(tier, prop.old, true);
     }
   }, [prop]);
 
@@ -144,9 +144,9 @@ function Weapon(prop: Props) {
   function valueCell(mode: string, column: string, isRawNumber = false, isReverseColor = false): (text: number, record: any) => any {
     return function (text: number, record: any): any {
       // console.log(record.characterName, record.weaponName, column)
-      let before: any = null
-      if (beforeJson.CharacterList.length !== 0) {
-        const tmp1: any = beforeJson.CharacterList.find((el: any) => {
+      let old: any = null
+      if (oldJson.CharacterList.length !== 0) {
+        const tmp1: any = oldJson.CharacterList.find((el: any) => {
           return el.Name === record.characterName
         })
         if (tmp1 !== undefined) {
@@ -162,11 +162,11 @@ function Weapon(prop: Props) {
           })
           if (tmp4.hasOwnProperty(column)) {
             // console.log("winrate: ", tmp3[column])
-            before = tmp4[column]
+            old = tmp4[column]
           }
         }
       }
-      return valueRender(text, before, isRawNumber, isReverseColor);
+      return valueRender(text, old, isRawNumber, isReverseColor);
     }
   }
 

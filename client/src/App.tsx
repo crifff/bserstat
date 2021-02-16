@@ -2,7 +2,7 @@ import React, { FC, useEffect, useState } from 'react';
 import 'antd/dist/antd.css';
 import './index.css';
 import './App.css';
-import User from "./Components/User";
+import Character from "./Components/Character";
 import Weapon from "./Components/Weapon";
 import Armor from "./Components/Armor";
 
@@ -92,14 +92,14 @@ function App() {
   let label = ""
   let period = ""
   let updated = ""
-  let beforeLabel = ""
+  let oldLabel = ""
   if (data.length > 0) {
     label = data[current.index].label
     period = data[current.index].period
     updated = data[current.index].updated
   }
   if (data.length > current.index + 1) {
-    beforeLabel = data[current.index + 1].label;
+    oldLabel = data[current.index + 1].label;
   }
   return <Router>
     <InnerComponent>
@@ -152,14 +152,14 @@ function App() {
           <Redirect to="/character/all"/>
         </Route>
         <Route path="/character/:tier(all|high)">
-          <User label={label} period={period}
-                updated={updated} before={beforeLabel}/>
+          <Character label={label} period={period}
+                updated={updated} old={oldLabel}/>
         </Route>
         <Route path="/weapon/:tier(all|high)">
-          <Weapon tier={current.tier} label={label} period={period} updated={updated} before={beforeLabel}/>
+          <Weapon tier={current.tier} label={label} period={period} updated={updated} old={oldLabel}/>
         </Route>
         <Route path="/armor/:tier(all|high)">
-          <Armor tier={current.tier} label={label} period={period} updated={updated} before={beforeLabel}/>
+          <Armor tier={current.tier} label={label} period={period} updated={updated} old={oldLabel}/>
         </Route>
       </Switch>
         </Content>

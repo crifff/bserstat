@@ -64,20 +64,20 @@ function characterFilter(list: { Name: string }[], lang: SupportedLocales) {
 }
 
 
-export function valueRender(text: number, before: any, rawNumber: boolean, reverse: boolean) {
+export function valueRender(text: number, old: any, rawNumber: boolean, reverse: boolean) {
   const minimalFontSize = "11px"
   if (rawNumber) {
     return <>
       {(text === 0) ? "-" : text.toFixed(1)}
-      {(before !== null) ?
+      {(old !== null) ?
 
-        ((text - before) === 0) ?
-          <div style={{color: "#999", fontSize: minimalFontSize}}>±0.0</div> : ((text - before) > 0 ?
+        ((text - old) === 0) ?
+          <div style={{color: "#999", fontSize: minimalFontSize}}>±0.0</div> : ((text - old) > 0 ?
             <div style={{color: plusColor(reverse), fontSize: minimalFontSize}}>
-              +{((text - before).toFixed(1))}
+              +{((text - old).toFixed(1))}
             </div> :
             <div style={{color: minusColor(reverse), fontSize: minimalFontSize}}>
-              {((text - before).toFixed(1))}
+              {((text - old).toFixed(1))}
             </div>
           )
         : null}
@@ -86,14 +86,14 @@ export function valueRender(text: number, before: any, rawNumber: boolean, rever
   return <>
     {(text === 0.0) ? "-" : (text * 100).toFixed(1) + "%"}
 
-    {(before !== null) ?
-      ((text - before) === 0) ?
-        <div style={{color: "#999", fontSize: minimalFontSize}}>±0.0</div> : ((text - before) > 0 ?
+    {(old !== null) ?
+      ((text - old) === 0) ?
+        <div style={{color: "#999", fontSize: minimalFontSize}}>±0.0</div> : ((text - old) > 0 ?
           <div style={{color: plusColor(reverse), fontSize: minimalFontSize}}>
-            +{((text - before) * 100).toFixed(1) + "%"}
+            +{((text - old) * 100).toFixed(1) + "%"}
           </div> :
           <div style={{color: minusColor(reverse), fontSize: minimalFontSize}}>
-            {((text - before) * 100).toFixed(1) + "%"}
+            {((text - old) * 100).toFixed(1) + "%"}
           </div>
         )
       : null}
