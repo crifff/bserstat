@@ -22,7 +22,6 @@ export function stringSort(a: string, b: string): number {
   return 0;
 }
 
-
 export function plusColor(reverse: boolean): string {
   return reverse ? "#ff4d4f" : "#52c41a"
 }
@@ -31,12 +30,10 @@ export function minusColor(reverse: boolean): string {
   return reverse ? "#52c41a" : "#ff4d4f"
 }
 
-
 interface FilterSet {
   text: string;
   value: string
 }
-
 
 export function Filter(list: string[], lang: SupportedLocales) {
   let uniqueList: FilterSet[] = []
@@ -49,20 +46,6 @@ export function Filter(list: string[], lang: SupportedLocales) {
   })
   return uniqueList;
 }
-
-function characterFilter(list: { Name: string }[], lang: SupportedLocales) {
-  let uniqueCharaList: FilterSet[] = []
-
-  // console.log(data)
-  list.forEach((chara: any) => {
-    if (chara.Name === "") {
-      return
-    }
-    uniqueCharaList.push({text: t(chara.Name, lang), value: chara.Name})
-  })
-  return uniqueCharaList;
-}
-
 
 export function valueRender(text: number, old: any, rawNumber: boolean, reverse: boolean) {
   const minimalFontSize = "11px"

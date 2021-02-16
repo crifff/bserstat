@@ -135,7 +135,7 @@ function Weapon(prop: Props) {
     if (prop.old !== "") {
       fetchUserRankJson(tier, prop.old, true);
     }
-  }, [prop]);
+  }, [tier, prop.label, prop.old]);
 
   function textCell(text: string, record: any): any {
     return t(text)
