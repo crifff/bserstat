@@ -5,11 +5,11 @@ import './App.css';
 import User from "./Components/User";
 import Weapon from "./Components/Weapon";
 import Armor from "./Components/Armor";
-import { SupportedLocales, t } from "./Translate/translate";
 
 import { Col, Layout, Menu, Radio, RadioChangeEvent, Row } from 'antd';
 import axios from "axios";
 import { BrowserRouter as Router, Link, Redirect, Route, Switch, useHistory } from "react-router-dom";
+import { useTranslate } from './Translate/hook';
 
 const {Content} = Layout;
 
@@ -26,9 +26,6 @@ interface IndexData {
   updated: string
   period: string
 }
-
-const isJa = navigator.language.startsWith('ja');
-const defaultLang: SupportedLocales = isJa ? 'ja' : 'en';
 
 function App() {
   const initialMode: Mode = {
@@ -54,7 +51,7 @@ function App() {
   }]
 
   const [current, setCurrent] = useState<Mode>(initialMode);
-  const [lang, setLang] = useState<SupportedLocales>(defaultLang);
+  const {t, lang, setLang} = useTranslate();
   const [data, setData] = useState<IndexData[]>(initialData);
 
   function fetchUserRankJson() {
@@ -113,32 +110,32 @@ function App() {
               <Menu onClick={handleMenuClick} selectedKeys={[current.key()]} mode="horizontal">
                 <Menu.Item key="character_all">
                   <Link to="/character/all">
-                    {t('Character(All)', lang)}
+                    {t('Character(All)')}
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="character_high">
               <Link to="/character/high">
-                {t('Character(High Tier)', lang)}
+                {t('Character(High Tier)')}
               </Link>
             </Menu.Item>
             <Menu.Item key="weapon_all">
               <Link to="/weapon/all">
-                {t('Weapon(All)', lang)}
+                {t('Weapon(All)')}
               </Link>
             </Menu.Item>
             <Menu.Item key="weapon_high">
               <Link to="/weapon/high">
-                {t('Weapon(High Tier)', lang)}
+                {t('Weapon(High Tier)')}
               </Link>
             </Menu.Item>
             <Menu.Item key="armor_all">
               <Link to="/armor/all">
-                {t('Armor(All)', lang)}
+                {t('Armor(All)')}
               </Link>
             </Menu.Item>
             <Menu.Item key="armor_high">
               <Link to="/armor/high">
-                {t('Armor(High Tier)', lang)}
+                {t('Armor(High Tier)')}
               </Link>
             </Menu.Item>
           </Menu>
@@ -155,16 +152,14 @@ function App() {
           <Redirect to="/character/all"/>
         </Route>
         <Route path="/character/:tier(all|high)">
-          <User label={label} period={period} lang={lang}
+          <User label={label} period={period}
                 updated={updated} before={beforeLabel}/>
         </Route>
         <Route path="/weapon/:tier(all|high)">
-          <Weapon tier={current.tier} label={label} period={period} lang={lang}
-                  updated={updated} before={beforeLabel}/>
+          <Weapon tier={current.tier} label={label} period={period} updated={updated} before={beforeLabel}/>
         </Route>
         <Route path="/armor/:tier(all|high)">
-          <Armor tier={current.tier} label={label} period={period} lang={lang}
-                 updated={updated} before={beforeLabel}/>
+          <Armor tier={current.tier} label={label} period={period} updated={updated} before={beforeLabel}/>
         </Route>
       </Switch>
         </Content>

@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import 'antd/dist/antd.css';
 import '../index.css';
 import axios from "axios";
-import { SupportedLocales, t } from "../Translate/translate";
 import RankTable from "./RankTable";
 import { stringSort, useTitle, valueRender } from "./Common";
 import { useParams } from "react-router-dom";
+import { useTranslate } from '../Translate/hook';
 
 
 interface Row {
@@ -78,10 +78,10 @@ interface UserProp {
   period: string
   label: string
   before: string
-  lang: SupportedLocales
 }
 
 function Armor(prop: UserProp) {
+  const {t} = useTranslate();
   const [json, setJson] = useState({TypeList: []});
   const [beforeJson, setBeforeJson] = useState({TypeList: []});
 
@@ -94,7 +94,7 @@ function Armor(prop: UserProp) {
     title = "Armor(High Tier)"
   }
 
-  useTitle(t(title, prop.lang) + " | BSER Stat", tier);
+  useTitle(t(title) + " | BSER Stat", tier);
 
   function fetchUserRankJson(tier: string, label: string, isBefore = false) {
     if (label === "") {
@@ -130,7 +130,7 @@ function Armor(prop: UserProp) {
   }, [prop]);
 
   function textCell(text: string, record: any): any {
-    return t(text, prop.lang)
+    return t(text)
   }
 
   function valueCell(mode: string, column: string, isRawNumber = false, isReverseColor = false): (text: number, record: any) => any {
@@ -170,25 +170,25 @@ function Armor(prop: UserProp) {
     value: string
   }
 
-  function ArmorTypeFilter(json: { TypeList: any[] }, lang: SupportedLocales) {
+  function ArmorTypeFilter(json: { TypeList: any[] }) {
     let uniqueArmorTypeList: FilterSet[] = []
     json.TypeList.forEach((armorType: any) => {
       if (armorType.Name === "") {
         return
       }
-      uniqueArmorTypeList.push({text: t(armorType.Name, lang), value: armorType.Name})
+      uniqueArmorTypeList.push({text: t(armorType.Name), value: armorType.Name})
     })
     return uniqueArmorTypeList;
   }
 
-  function ArmorFilter(json: { TypeList: any[] }, lang: SupportedLocales) {
+  function ArmorFilter(json: { TypeList: any[] }) {
     let uniqueArmorList: FilterSet[] = []
     json.TypeList.forEach((armorType: any) => {
       if (armorType.WeaponTypeList === null) {
         return
       }
       armorType.ArmorList.forEach((armor: any) => {
-        uniqueArmorList.push({text: t(armor.Name, lang), value: armor.Name})
+        uniqueArmorList.push({text: t(armor.Name), value: armor.Name})
       })
     })
     return uniqueArmorList
@@ -200,10 +200,10 @@ function Armor(prop: UserProp) {
       title: "",
       children: [
         {
-          title: t('Type', prop.lang),
+          title: t('Type'),
           dataIndex: 'armorTypeName',
           sorter: (a: Row, b: Row) => stringSort(a.armorTypeName, b.armorTypeName),
-          filters: ArmorTypeFilter(json,prop.lang),
+          filters: ArmorTypeFilter(json),
           onFilter: (value: any, record: any) => {
             if (record.armorTypeName === "Base Win Rate") {
               return true
@@ -214,10 +214,10 @@ function Armor(prop: UserProp) {
           render: textCell,
         },
         {
-          title: t('Armor', prop.lang),
+          title: t('Armor'),
           dataIndex: 'armorName',
           sorter: (a: Row, b: Row) => stringSort(a.armorName, b.armorName),
-          filters: ArmorFilter(json, prop.lang),
+          filters: ArmorFilter(json),
           onFilter: (value: any, record: any) => {
             if (record.armorTypeName === "Base Win Rate") {
               return true
@@ -230,12 +230,12 @@ function Armor(prop: UserProp) {
       ]
     },
     {
-      title: t("Solo", prop.lang),
+      title: t("Solo"),
       className: "border-left",
       style: {borderLeft: "solid #000 2px", backgroundColor: "black !important"},
       children: [
         {
-          title: t('Win Rate', prop.lang),
+          title: t('Win Rate'),
           dataIndex: 'soloWinRate',
           align: "right",
           className: "border-left",
@@ -244,7 +244,7 @@ function Armor(prop: UserProp) {
 
         },
         {
-          title: t('Pick Rate', prop.lang),
+          title: t('Pick Rate'),
           dataIndex: 'soloPickRate',
           align: "right",
           render: valueCell("Solo", "PickRate"),
@@ -253,11 +253,11 @@ function Armor(prop: UserProp) {
       ]
     },
     {
-      title: t("Duo", prop.lang),
+      title: t("Duo"),
       className: "border-left",
       children: [
         {
-          title: t('Win Rate', prop.lang),
+          title: t('Win Rate'),
           dataIndex: 'duoWinRate',
           align: "right",
           className: "border-left",
@@ -266,7 +266,7 @@ function Armor(prop: UserProp) {
 
         },
         {
-          title: t('Pick Rate', prop.lang),
+          title: t('Pick Rate'),
           dataIndex: 'duoPickRate',
           align: "right",
           render: valueCell("Duo", "PickRate"),
@@ -275,11 +275,11 @@ function Armor(prop: UserProp) {
       ]
     },
     {
-      title: t("Squad", prop.lang),
+      title: t("Squad"),
       className: "border-left",
       children: [
         {
-          title: t('Win Rate', prop.lang),
+          title: t('Win Rate'),
           dataIndex: 'squadWinRate',
           align: "right",
           className: "border-left",
@@ -288,7 +288,7 @@ function Armor(prop: UserProp) {
 
         },
         {
-          title: t('Pick Rate', prop.lang),
+          title: t('Pick Rate'),
           dataIndex: 'squadPickRate',
           align: "right",
           render: valueCell("Squad", "PickRate"),
