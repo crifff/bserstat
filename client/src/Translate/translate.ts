@@ -1,6 +1,8 @@
 import { dictionary_ja } from "./ja";
 
-export function t(key: string, lang: string): string {
+export type SupportedLocales = 'ja' | 'en';
+
+export function t(key: string, lang: SupportedLocales): string {
   if (lang === "en") {
     return key
   }
@@ -16,5 +18,3 @@ export function t(key: string, lang: string): string {
   console.warn(`text key: '${key}' not found`)
   return key;
 }
-
-export default {t};

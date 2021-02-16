@@ -1,10 +1,10 @@
 import { Descriptions, PageHeader, Table } from "antd";
-import { t } from "../Translate/translate";
+import { SupportedLocales, t } from "../Translate/translate";
 import React from "react";
 
 interface RankTableProp {
   title:string
-  lang: string
+  lang: SupportedLocales
   updated: string
   period: string
   columns:any

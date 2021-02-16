@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import 'antd/dist/antd.css';
 import '../index.css';
 import axios from "axios";
-import { t } from "../Translate/translate";
+import { SupportedLocales, t } from "../Translate/translate";
 import { useParams } from "react-router-dom";
 import RankTable from "./RankTable";
 import { stringSort, valueRender } from "./Common";
@@ -94,7 +94,7 @@ interface UserProp {
   period: string
   label: string
   before: string
-  lang: string
+  lang: SupportedLocales
 }
 
 
@@ -184,7 +184,7 @@ function User(prop: UserProp) {
     value: string
   }
 
-  function characterFilter(json: { CharacterList: any[] }, lang: string) {
+  function characterFilter(json: { CharacterList: any[] }, lang: SupportedLocales) {
     let uniqueCharaList: FilterSet[] = []
     json.CharacterList.forEach((chara: any) => {
       if (chara.Name === "") {
@@ -195,7 +195,7 @@ function User(prop: UserProp) {
     return uniqueCharaList;
   }
 
-  function weaponTypeFilter(json: { CharacterList: any[] }, lang: string) {
+  function weaponTypeFilter(json: { CharacterList: any[] }, lang: SupportedLocales) {
     let uniqueWeaponTypeList: FilterSet[] = []
     json.CharacterList.forEach((chara: any) => {
       if (chara.WeaponTypeList === null) {

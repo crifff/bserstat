@@ -1,5 +1,5 @@
 import React from "react";
-import { t } from "../Translate/translate";
+import { SupportedLocales, t } from "../Translate/translate";
 
 export function stringSort(a: string, b: string): number {
   if (a === null || a === undefined) {
@@ -38,7 +38,7 @@ interface FilterSet {
 }
 
 
-export function Filter(list: string[], lang: string) {
+export function Filter(list: string[], lang: SupportedLocales) {
   let uniqueList: FilterSet[] = []
   // console.log(list)
   list.forEach((item: any) => {
@@ -50,7 +50,7 @@ export function Filter(list: string[], lang: string) {
   return uniqueList;
 }
 
-function characterFilter(list: { Name: string }[], lang: string) {
+function characterFilter(list: { Name: string }[], lang: SupportedLocales) {
   let uniqueCharaList: FilterSet[] = []
 
   // console.log(data)

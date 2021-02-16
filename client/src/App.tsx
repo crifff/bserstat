@@ -5,9 +5,9 @@ import './App.css';
 import User from "./Components/User";
 import Weapon from "./Components/Weapon";
 import Armor from "./Components/Armor";
-import { t } from "./Translate/translate";
+import { SupportedLocales, t } from "./Translate/translate";
 
-import { Col, Layout, Menu, Radio, Row } from 'antd';
+import { Col, Layout, Menu, Radio, RadioChangeEvent, Row } from 'antd';
 import axios from "axios";
 import { BrowserRouter as Router, Link, Redirect, Route, Switch } from "react-router-dom";
 
@@ -26,6 +26,9 @@ interface IndexData {
   updated: string
   period: string
 }
+
+const isJa = navigator.language.startsWith('ja');
+const defaultLang: SupportedLocales = isJa ? 'ja' : 'en';
 
 function App() {
   const initialMode: Mode = {
@@ -51,7 +54,7 @@ function App() {
   }]
 
   const [current, setCurrent] = useState<Mode>(initialMode);
-  const [lang, setLang] = useState<string>("ja");
+  const [lang, setLang] = useState<SupportedLocales>(defaultLang);
   const [data, setData] = useState<IndexData[]>(initialData);
 
   function fetchUserRankJson() {
@@ -83,7 +86,7 @@ function App() {
     setCurrent(mode)
   }
 
-  function handleLangChange(e: any) {
+  function handleLangChange(e: RadioChangeEvent) {
     setLang(e.target.value)
     console.log("set to ", e.target.value);
   }
