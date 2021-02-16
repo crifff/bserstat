@@ -26,7 +26,9 @@
     "eject": "react-scripts eject",
     "check:type": "tsc --noEmit",
     "check:lint": "eslint .",
-    "check:style": "prettier -c src/"
+    "check:style": "prettier -c src/",
+    "check:all": "yarn check:type && yarn check:lint && yarn check:style",
+    "format": "yarn check:style --write && yarn check:lint"
   },
   "eslintConfig": {
     "extends": [
