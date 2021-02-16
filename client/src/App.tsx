@@ -1,6 +1,4 @@
 import React, { FC, useEffect, useState } from 'react';
-import 'antd/dist/antd.css';
-import './index.css';
 import './App.css';
 import Character from "./Components/Character";
 import Weapon from "./Components/Weapon";
@@ -105,7 +103,7 @@ function App() {
     <InnerComponent>
       <Layout>
         <Content>
-          <Row wrap={false} align={"middle"} style={{backgroundColor: "#fff"}}>
+          <Row wrap={false} align={"middle"} className={"menu-row"}>
             <Col flex="none">
               <Menu onClick={handleMenuClick} selectedKeys={[current.key()]} mode="horizontal">
                 <Menu.Item key="character_all">

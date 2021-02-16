@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import 'antd/dist/antd.css';
-import '../index.css';
 import axios from "axios";
 import RankTable from "./RankTable";
 import { stringSort, useTitle, valueRender } from "./Common";

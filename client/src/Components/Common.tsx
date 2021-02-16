@@ -22,12 +22,12 @@ export function stringSort(a: string, b: string): number {
   return 0;
 }
 
-export function plusColor(reverse: boolean): string {
-  return reverse ? "#ff4d4f" : "#52c41a"
+function plusColorClassName(reverse: boolean): string {
+  return reverse ? "value-color-red" : "value-color-green"
 }
 
-export function minusColor(reverse: boolean): string {
-  return reverse ? "#52c41a" : "#ff4d4f"
+function minusColorClassName(reverse: boolean): string {
+  return reverse ? "value-color-green" : "value-color-red"
 }
 
 interface FilterSet {
@@ -55,11 +55,11 @@ export function valueRender(text: number, old: any, rawNumber: boolean, reverse:
       {(old !== null) ?
 
         ((text - old) === 0) ?
-          <div style={{color: "#999", fontSize: minimalFontSize}}>±0.0</div> : ((text - old) > 0 ?
-            <div style={{color: plusColor(reverse), fontSize: minimalFontSize}}>
+          <div style={{fontSize: minimalFontSize}} className={"value-color-zero"}>±0.0</div> : ((text - old) > 0 ?
+            <div style={{fontSize: minimalFontSize}} className={plusColorClassName(reverse)}>
               +{((text - old).toFixed(1))}
             </div> :
-            <div style={{color: minusColor(reverse), fontSize: minimalFontSize}}>
+            <div style={{fontSize: minimalFontSize}} className={minusColorClassName(reverse)}>
               {((text - old).toFixed(1))}
             </div>
           )
@@ -71,11 +71,11 @@ export function valueRender(text: number, old: any, rawNumber: boolean, reverse:
 
     {(old !== null) ?
       ((text - old) === 0) ?
-        <div style={{color: "#999", fontSize: minimalFontSize}}>±0.0</div> : ((text - old) > 0 ?
-          <div style={{color: plusColor(reverse), fontSize: minimalFontSize}}>
+        <div style={{fontSize: minimalFontSize}}>±0.0</div> : ((text - old) > 0 ?
+          <div style={{fontSize: minimalFontSize}} className={plusColorClassName(reverse)}>
             +{((text - old) * 100).toFixed(1) + "%"}
           </div> :
-          <div style={{color: minusColor(reverse), fontSize: minimalFontSize}}>
+          <div style={{fontSize: minimalFontSize}} className={minusColorClassName(reverse)}>
             {((text - old) * 100).toFixed(1) + "%"}
           </div>
         )

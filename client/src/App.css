@@ -1,14 +1,17 @@
 .border-left {
-    border-left: solid 3px #f0f0f0;
+    border-left-width: 3px;
+}
+
+.menu-row {
+    background-color: #141414;
 }
 
 .row-base-win-rate {
-    background-color: #ffffb8;
+    background-color: #595014;
 }
 
 .row-base-win-rate .ant-table-column-sort {
-    background-color: #fffb8f;
-
+    background-color: #7c6e14;
 }
 
 .ant-table-thead th {
@@ -17,4 +20,15 @@
     white-space: nowrap;
     top: 0;
     z-index: 100;
+}
+
+.value-color-zero {
+    color: #777;
+}
+
+.value-color-red{
+    color:#ff4d4f;
+}
+.value-color-green{
+    color: #52c41a;
 }
