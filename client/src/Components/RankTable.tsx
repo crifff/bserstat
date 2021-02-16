@@ -1,6 +1,7 @@
 import { Descriptions, PageHeader, Table } from "antd";
 import React from "react";
 import { useTranslate } from "../Translate/hook";
+import { t } from "../Translate/translate";
 
 interface RankTableProp {
   title: string;

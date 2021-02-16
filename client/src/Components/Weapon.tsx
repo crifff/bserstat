@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
 import RankTable from "./RankTable";
-import { stringSort, useTitle, valueRender } from "./Common";
+import { imageName, stringSort, useTitle, valueRender } from "./Common";
 import { useParams } from "react-router-dom";
 import { useTranslate } from '../Translate/hook';
 
@@ -79,7 +79,6 @@ function makeData(data: any): Row[] {
 }
 
 interface Props {
-  tier: string
   updated: string
   period: string
   label: string
@@ -135,9 +134,6 @@ function Weapon(prop: Props) {
     }
   }, [tier, prop.label, prop.old]);
 
-  function textCell(text: string, record: any): any {
-    return t(text)
-  }
 
   function valueCell(mode: string, column: string, isRawNumber = false, isReverseColor = false): (text: number, record: any) => any {
     return function (text: number, record: any): any {
@@ -225,6 +221,37 @@ function Weapon(prop: Props) {
     }, []);
   }
 
+  function textCell(text: string, record: any): any {
+    return t(text)
+  }
+
+  function characterCell(text: string, record: any): any {
+    return <div>
+      {text !== "Base Win Rate" &&
+      <img className={"thumbnail-character"} src={`/images/characters/${text}.png`} alt={text} width={30}/>}
+
+      {textCell(text, record)}
+    </div>
+  }
+
+  function weaponTypeCell(text: string, record: any): any {
+    return <div>
+      {text !== undefined && text !== "" &&
+      <img className={"thumbnail-weaponType"} src={`/images/weapon_types/${imageName(text)}.png`} alt={text}/>}
+
+      {textCell(text, record)}
+    </div>
+  }
+
+  function weaponCell(text: string, record: any): any {
+    return <div>
+      {text !== undefined && text !== "" &&
+      <img className={"thumbnail-weapon"} src={`/images/items/${imageName(text)}.png`} alt={text}/>}
+
+      {textCell(text, record)}
+    </div>
+  }
+
   const columns = [
     {
       title: "",
@@ -241,7 +268,7 @@ function Weapon(prop: Props) {
             return record.characterName === value
           },
           filterMultiple: true,
-          render: textCell,
+          render: characterCell,
         },
         {
           title: t('Weapon Type'),
@@ -255,7 +282,7 @@ function Weapon(prop: Props) {
             return record.weaponTypeName === value
           },
           filterMultiple: true,
-          render: textCell,
+          render: weaponTypeCell,
         },
         {
           title: t('Weapon'),
@@ -269,7 +296,7 @@ function Weapon(prop: Props) {
             return record.weaponName === value
           },
           filterMultiple: true,
-          render: textCell,
+          render: weaponCell,
         }
       ]
     },

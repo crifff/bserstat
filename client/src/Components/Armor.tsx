@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
 import RankTable from "./RankTable";
-import { stringSort, useTitle, valueRender } from "./Common";
+import { imageName, stringSort, useTitle, valueRender } from "./Common";
 import { useParams } from "react-router-dom";
 import { useTranslate } from '../Translate/hook';
 
@@ -71,7 +71,6 @@ function makeData(data: any): Row[] {
 }
 
 interface UserProp {
-  tier: string
   updated: string
   period: string
   label: string
@@ -127,8 +126,19 @@ function Armor(prop: UserProp) {
     }
   }, [tier, prop.label, prop.old]);
 
+
   function textCell(text: string, record: any): any {
     return t(text)
+  }
+
+
+  function armorCell(text: string, record: any): any {
+    return <div>
+      {text !== undefined && text !== "" &&
+      <img className={"thumbnail-weapon"} src={`/images/items/${imageName(text)}.png`} alt={text}/>}
+
+      {textCell(text, record)}
+    </div>
   }
 
   function valueCell(mode: string, column: string, isRawNumber = false, isReverseColor = false): (text: number, record: any) => any {
@@ -223,7 +233,7 @@ function Armor(prop: UserProp) {
             return record.armorName === value
           },
           filterMultiple: true,
-          render: textCell,
+          render: armorCell,
         }
       ]
     },

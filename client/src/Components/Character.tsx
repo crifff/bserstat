@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import RankTable from "./RankTable";
-import { stringSort, useTitle, valueRender } from "./Common";
+import { imageName, stringSort, useTitle, valueRender } from "./Common";
 import { useTranslate } from '../Translate/hook';
 
 interface Row {
@@ -144,9 +144,6 @@ function Character(prop: UserProp) {
     }
   }, [tier, prop.label, prop.old]);
 
-  function textCell(text: string, record: any): any {
-    return t(text)
-  }
 
   function valueCell(mode: string, column: string, isRawNumber = false, isReverseColor = false): (text: number, record: any) => any {
     return function (text: number, record: any): any {
@@ -214,6 +211,37 @@ function Character(prop: UserProp) {
     }, []);
   }
 
+  function textCell(text: string, record: any): any {
+    return t(text)
+  }
+
+  function characterCell(text: string, record: any): any {
+    return <div>
+      {text !== "Base Win Rate" &&
+      <img className={"thumbnail-character"} src={`/images/characters/${text}.png`} alt={text} width={30}/>}
+
+      {textCell(text, record)}
+    </div>
+  }
+
+  function weaponTypeCell(text: string, record: any): any {
+    return <div>
+      {text !== undefined && text !== "" &&
+      <img className={"thumbnail-weaponType"} src={`/images/weapon_types/${imageName(text)}.png`} alt={text}/>}
+
+      {textCell(text, record)}
+    </div>
+  }
+
+  function weaponCell(text: string, record: any): any {
+    return <div>
+      {text !== undefined && text !== "" &&
+      <img className={"thumbnail-weapon"} src={`/images/items/${imageName(text)}.png`} alt={text}/>}
+
+      {textCell(text, record)}
+    </div>
+  }
+
   const columns = [
     {
       title: "",
@@ -230,7 +258,7 @@ function Character(prop: UserProp) {
             return record.characterName === value
           },
           filterMultiple: true,
-          render: textCell,
+          render: characterCell,
         },
         {
           title: t('Weapon'),
@@ -244,7 +272,7 @@ function Character(prop: UserProp) {
             return record.weaponName === value
           },
           filterMultiple: true,
-          render: textCell,
+          render: weaponTypeCell,
         }
       ]
     },

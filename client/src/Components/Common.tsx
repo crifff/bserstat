@@ -94,3 +94,20 @@ export function useTitle(titleOrFn: TitleOrGetter, ...deps: React.DependencyList
     [title, ...deps]
   );
 }
+
+
+const imageNameMap: Map<string, string> = new Map([
+  ["Thuận Thiên", "Thuan Thien"],
+  ["Dáinsleif", "Dainsleif"],
+])
+
+export function imageName(name: string): string | undefined {
+  if (name === undefined) {
+    return name
+  }
+  name = name.trim()
+  if (imageNameMap.has(name)) {
+    return imageNameMap.get(name)
+  }
+  return name.replace("'", "_").replace("&", "_")
+}

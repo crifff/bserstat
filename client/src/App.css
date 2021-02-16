@@ -32,3 +32,29 @@
 .value-color-green{
     color: #52c41a;
 }
+
+.thumbnail-weapon{
+    background-color: #333;
+    width: 70px;
+    height: 40px;
+    border:1px solid #303030;
+    border-radius: 6px;
+    margin-right: 1em;
+}
+
+.thumbnail-character{
+    background-color: #333;
+    width: 30px;
+    height: 40px;
+    border:1px solid #303030;
+    border-radius: 6px;
+    margin-right: 1em;
+}
+.thumbnail-weaponType{
+    background-color: #333;
+    width: 40px;
+    height: 40px;
+    border:1px solid #303030;
+    border-radius: 6px;
+    margin-right: 1em;
+}
