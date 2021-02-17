@@ -18,8 +18,11 @@ interface Row {
   squadPickRate: number;
 }
 
-function makeData(data: any): Row[] {
-  let result: Row[] = []
+function makeData(data: BserStat.Weapon.Response|undefined): Row[] {
+  let result: Row[] = [];
+  if (data === undefined) {
+    return result
+  }
   if (data.CharacterList.length === 0) {
     return result
   }
@@ -87,8 +90,8 @@ interface Props {
 
 function Weapon(prop: Props) {
   const {t} = useTranslate();
-  const [json, setJson] = useState({CharacterList: []});
-  const [oldJson, setOldJson] = useState({CharacterList: []});
+  const [json, setJson] = useState<BserStat.Weapon.Response>();
+  const [oldJson, setOldJson] = useState<BserStat.Weapon.Response>();
 
   let {tier} = useParams<{
     tier: string
@@ -105,7 +108,7 @@ function Weapon(prop: Props) {
     if (label === "") {
       return
     }
-    let url = "https://storage.googleapis.com/bserstat/data/"
+    let url = "/data/"
     url += label + "/"
     if (tier === "all") {
       url += "weapon_all.json"
@@ -138,11 +141,14 @@ function Weapon(prop: Props) {
   function valueCell(mode: string, column: string, isRawNumber = false, isReverseColor = false): (text: number, record: any) => any {
     return function (text: number, record: any): any {
       // console.log(record.characterName, record.weaponName, column)
-      let old: any = null
+      let old: number|null = null
+      if (oldJson === undefined) {
+        return null
+      }
       if (oldJson.CharacterList.length !== 0) {
         const tmp1: any = oldJson.CharacterList.find((el: any) => {
           return el.Name === record.characterName
-        })
+        });
         if (tmp1 !== undefined) {
           const tmp2: any = tmp1.WeaponTypeList.find((el: any) => {
             return el.Name === record.weaponTypeName
@@ -170,21 +176,26 @@ function Weapon(prop: Props) {
     value: string
   }
 
-  function characterFilter(json: { CharacterList: any[] }) {
+  function characterFilter(json: BserStat.Weapon.Response | undefined) {
     let uniqueCharaList: FilterSet[] = []
-
+    if (json === undefined) {
+      return null
+    }
     // console.log(data)
     json.CharacterList.forEach((chara: any) => {
       if (chara.Name === "") {
         return
       }
       uniqueCharaList.push({text: t(chara.Name), value: chara.Name})
-    })
+    });
     return uniqueCharaList;
   }
 
-  function weaponTypeFilter(json: { CharacterList: any[] }) {
+  function weaponTypeFilter(json: BserStat.Weapon.Response | undefined) {
     let uniqueWeaponTypeList: FilterSet[] = []
+    if (json === undefined) {
+      return null
+    }
     json.CharacterList.forEach((chara: any) => {
       if (chara.WeaponTypeList === null) {
         return
@@ -201,8 +212,11 @@ function Weapon(prop: Props) {
     }, []);
   }
 
-  function weaponFilter(json: { CharacterList: any[] }) {
+  function weaponFilter(json: BserStat.Weapon.Response | undefined) {
     let uniqueWeaponList: FilterSet[] = []
+    if (json === undefined) {
+      return null
+    }
     json.CharacterList.forEach((chara: any) => {
       if (chara.WeaponTypeList === null) {
         return

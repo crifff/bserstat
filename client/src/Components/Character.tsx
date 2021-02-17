@@ -22,10 +22,13 @@ interface Row {
   squadPlayerKill: number;
 }
 
-function makeData(data: any): Row[] {
+function makeData(data: BserStat.Character.Response | undefined): Row[] {
   let result: Row[] = []
-  if (data.CharacterList.length === 0) {
+  if (data === undefined) {
     return result
+  }
+  if (data.CharacterList.length === 0) {
+    return result;
   }
 
   function extracted(chara: any, weapon: any) {
@@ -97,8 +100,8 @@ interface UserProp {
 
 function Character(prop: UserProp) {
   const {t} = useTranslate();
-  const [json, setJson] = useState({CharacterList: []});
-  const [oldJson, setOldJson] = useState({CharacterList: []});
+  const [json, setJson] = useState<BserStat.Character.Response>();
+  const [oldJson, setOldJson] = useState<BserStat.Character.Response>();
 
   let {tier} = useParams<{
     tier: string
@@ -115,15 +118,15 @@ function Character(prop: UserProp) {
     if (label === "") {
       return
     }
-    let url = "https://storage.googleapis.com/bserstat/data/"
+    let url = "/data/"
     url += label + "/"
     if (tier === "all") {
       url += "character_all.json"
     }else {
       url += "character_high.json"
     }
-    axios.get<any>(url)
-      .then((response: any) => {
+    axios.get<BserStat.Character.Response>(url)
+      .then((response) => {
         if (isOld) {
           setOldJson(response.data)
         }else {
@@ -147,26 +150,31 @@ function Character(prop: UserProp) {
 
   function valueCell(mode: string, column: string, isRawNumber = false, isReverseColor = false): (text: number, record: any) => any {
     return function (text: number, record: any): any {
+      if (oldJson === undefined) {
+        return null
+      }
       // console.log(record.characterName, record.weaponName, column)
-      let old: any = null
+      let old: number | null = null;
       if (oldJson.CharacterList.length !== 0) {
-        const tmp1: any = oldJson.CharacterList.find((el: any) => {
+        const tmp1 = oldJson.CharacterList.find((el: any) => {
           return el.Name === record.characterName
         })
         if (tmp1 !== undefined) {
           // console.log("tmp1: ", tmp1.RankWeaponList)
-          const tmp2: any = tmp1.RankWeaponList.find((el: any) => {
+          const tmp2 = tmp1.RankWeaponList.find((el: any) => {
             return el.Name === record.weaponName
           })
-          // console.log("tmp2: ", tmp2)
-          const tmp3: any = tmp2.ModeList.find((el: any) => {
-            return el.Mode === mode
-          })
-          // console.log("tmp3: ", tmp3)
+          if (tmp2 !== undefined) {
 
-          if (tmp3.hasOwnProperty(column)) {
-            // console.log("winrate: ", tmp3[column])
-            old = tmp3[column]
+            // console.log("tmp2: ", tmp2)
+            const tmp3 = tmp2.ModeList.find((el: any) => {
+              return el.Mode === mode
+            });
+            // console.log("tmp3: ", tmp3)
+            if (tmp3 !== undefined && tmp3.hasOwnProperty(column)) {
+              // console.log("winrate: ", tmp3[column])
+              old = tmp3[column]
+            }
           }
         }
       }
@@ -176,14 +184,16 @@ function Character(prop: UserProp) {
   }
 
 
-
   interface FilterSet {
     text: string;
     value: string
   }
 
-  function characterFilter(json: { CharacterList: any[] }) {
-    let uniqueCharaList: FilterSet[] = []
+  function characterFilter(json: BserStat.Character.Response | undefined) {
+    if (json === undefined) {
+      return null
+    }
+    let uniqueCharaList: FilterSet[] = [];
     json.CharacterList.forEach((chara: any) => {
       if (chara.Name === "") {
         return
@@ -193,8 +203,11 @@ function Character(prop: UserProp) {
     return uniqueCharaList;
   }
 
-  function weaponTypeFilter(json: { CharacterList: any[] }) {
-    let uniqueWeaponTypeList: FilterSet[] = []
+  function weaponTypeFilter(json: BserStat.Character.Response | undefined) {
+    if (json === undefined) {
+      return null
+    }
+    let uniqueWeaponTypeList: FilterSet[] = [];
     json.CharacterList.forEach((chara: any) => {
       if (chara.WeaponTypeList === null) {
         return
@@ -228,15 +241,6 @@ function Character(prop: UserProp) {
     return <div>
       {text !== undefined && text !== "" &&
       <img className={"thumbnail-weaponType"} src={`/images/weapon_types/${imageName(text)}.png`} alt={text}/>}
-
-      {textCell(text, record)}
-    </div>
-  }
-
-  function weaponCell(text: string, record: any): any {
-    return <div>
-      {text !== undefined && text !== "" &&
-      <img className={"thumbnail-weapon"} src={`/images/items/${imageName(text)}.png`} alt={text}/>}
 
       {textCell(text, record)}
     </div>

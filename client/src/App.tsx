@@ -5,7 +5,6 @@ import Weapon from "./Components/Weapon";
 import Armor from "./Components/Armor";
 
 import { Col, Layout, Menu, Radio, RadioChangeEvent, Row } from 'antd';
-import axios from "axios";
 import { BrowserRouter as Router, Link, Redirect, Route, Switch, useHistory, useParams } from "react-router-dom";
 import { useTranslate } from './Translate/hook';
 

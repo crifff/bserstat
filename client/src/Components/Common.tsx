@@ -47,7 +47,7 @@ export function Filter(list: string[], lang: SupportedLocales) {
   return uniqueList;
 }
 
-export function valueRender(text: number, old: any, rawNumber: boolean, reverse: boolean) {
+export function valueRender(text: number, old: number | null, rawNumber: boolean, reverse: boolean) {
   const minimalFontSize = "11px"
   if (rawNumber) {
     return <>
@@ -71,7 +71,7 @@ export function valueRender(text: number, old: any, rawNumber: boolean, reverse:
 
     {(old !== null) ?
       ((text - old) === 0) ?
-        <div style={{fontSize: minimalFontSize}}>±0.0</div> : ((text - old) > 0 ?
+        <div style={{fontSize: minimalFontSize}} className={"value-color-zero"}>±0.0</div> : ((text - old) > 0 ?
           <div style={{fontSize: minimalFontSize}} className={plusColorClassName(reverse)}>
             +{((text - old) * 100).toFixed(1) + "%"}
           </div> :

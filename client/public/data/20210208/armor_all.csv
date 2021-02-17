@@ -1,0 +1,60 @@
+Type,Armor,Solo Win Rate,Solo Pick Rate,Duo Win Rate,Duo Pick Rate,Squad Win Rate,Squad Pick Rate
+Base Win Rate,,5.6%,,11.1%,,16.6%,
+Head,Mithril Helm,20.2%,3.5%,34.1%,2.7%,40.7%,2.6%
+Head,Crystal Tiara,2.2%,10.1%,6.8%,11.5%,12.4%,13.6%
+Head,Motorcycle Helmet,5.9%,10.8%,14.4%,9.8%,22.6%,8.4%
+Head,Tactical OPS Helmet,8.0%,9.1%,17.5%,7.2%,25.4%,6.7%
+Head,Helm of Banneret,11.1%,2.4%,18.8%,2.4%,26.1%,2.6%
+Head,Laurel Wreath,18.3%,3.0%,31.4%,2.6%,38.8%,2.3%
+Head,Imperial Crown,8.2%,10.5%,17.8%,14.8%,26.3%,17.5%
+Head,Imperial Burgonet,9.9%,13.2%,20.5%,11.4%,29.2%,11.2%
+Head,Chinese Opera Mask,22.8%,1.1%,36.9%,0.9%,44.1%,1.0%
+Chest,Covert Agent Uniform,6.9%,0.4%,11.1%,0.4%,13.8%,0.5%
+Chest,Sunset Armor,4.1%,5.8%,10.7%,5.8%,17.8%,6.6%
+Chest,Optical Camouflage Suit,5.6%,13.2%,13.4%,12.5%,20.4%,11.5%
+Chest,Rocker's Jacket,17.3%,1.6%,29.7%,1.6%,34.8%,1.7%
+Chest,Mithril Armor,4.1%,4.8%,11.4%,5.1%,18.1%,5.6%
+Chest,Crusader Armor,7.5%,5.4%,13.0%,6.0%,18.4%,6.0%
+Chest,Amazoness Armor,9.8%,2.5%,17.5%,2.8%,24.9%,3.6%
+Chest,Dragon Dobok,8.0%,6.9%,17.1%,5.1%,24.2%,4.3%
+Chest,Butler's Suit,9.9%,2.2%,16.6%,2.7%,24.0%,3.7%
+Chest,Battle Suit,20.4%,0.4%,33.4%,0.4%,40.2%,0.5%
+Chest,Blazing Dress,8.8%,6.6%,13.7%,4.7%,21.2%,3.8%
+Chest,EOD Suit,12.6%,3.8%,22.9%,3.0%,30.2%,3.1%
+Chest,Commander's Armor,4.2%,7.9%,10.5%,9.1%,17.8%,9.2%
+Chest,Kabana,18.2%,3.6%,32.7%,5.2%,41.8%,5.8%
+Chest,Queen of Hearts,28.3%,1.8%,48.8%,1.9%,57.2%,2.1%
+Arm,Sword Stopper,11.3%,2.3%,15.2%,2.3%,20.7%,2.6%
+Arm,Draupnir,6.4%,11.0%,14.9%,11.5%,23.7%,12.1%
+Arm,Creed of the Knight,4.9%,8.3%,12.3%,7.9%,19.5%,6.9%
+Arm,Sheath of Shah Jahan,3.5%,8.6%,10.5%,8.7%,17.9%,8.7%
+Arm,Cube Watch,10.9%,2.9%,19.8%,2.4%,26.1%,2.4%
+Arm,Vital Sign Sensor,0.4%,1.7%,2.7%,1.4%,4.9%,1.3%
+Arm,Burnished Aegis,6.3%,5.6%,15.9%,7.9%,24.5%,9.6%
+Arm,Radar,15.4%,3.6%,28.7%,3.3%,36.2%,3.3%
+Arm,Mithril Shield,11.0%,9.3%,20.9%,7.1%,28.8%,6.8%
+Arm,Auto Arms,21.3%,3.5%,40.6%,3.0%,47.9%,3.0%
+Arm,Bracelet of Skadi,25.1%,2.6%,41.1%,2.6%,48.6%,2.7%
+Leg,Feather Boots,0.9%,3.2%,5.1%,3.9%,10.2%,4.6%
+Leg,Maverick Runner,7.1%,8.7%,13.2%,6.7%,20.0%,6.1%
+Leg,Straitjacket Sneakers,4.3%,14.7%,11.6%,15.9%,19.4%,17.5%
+Leg,Mithril Boots,15.6%,1.1%,27.1%,1.1%,34.5%,1.2%
+Leg,Bucephalus,4.3%,12.5%,11.3%,11.7%,19.0%,10.5%
+Leg,EOD Boots,10.8%,3.5%,19.2%,3.6%,28.6%,4.7%
+Leg,White Rhinos,6.6%,11.7%,13.0%,11.0%,20.0%,10.6%
+Leg,Glacial Shoes,14.9%,5.8%,30.8%,6.9%,40.1%,7.1%
+Leg,Boots of Hermes,26.6%,4.3%,45.7%,3.4%,52.2%,3.4%
+Leg,Red Shoes,26.7%,1.5%,43.7%,1.4%,49.6%,1.3%
+Accessory,Laced Quiver,6.2%,9.5%,13.6%,9.7%,20.7%,8.9%
+Accessory,Uchiwa,5.4%,14.3%,13.5%,14.9%,20.4%,14.9%
+Accessory,Schrodinger's Box,10.2%,7.4%,19.8%,9.0%,27.4%,11.5%
+Accessory,Veritas Lux Mea,8.7%,5.4%,18.6%,3.7%,26.0%,3.1%
+Accessory,Emerald Tablet,21.5%,1.7%,37.9%,1.5%,45.7%,1.3%
+Accessory,Glacial Ice,4.7%,0.1%,12.1%,0.1%,18.1%,0.2%
+Accessory,True Samadhi Fire,9.4%,0.1%,18.5%,0.1%,25.7%,0.1%
+Accessory,Moonlight Pendant,14.4%,3.4%,25.4%,2.1%,31.3%,1.8%
+Accessory,White Crane Fan,8.8%,10.5%,17.4%,9.8%,24.6%,10.1%
+Accessory,Magazine,8.1%,11.5%,14.4%,10.7%,21.3%,11.4%
+Accessory,Flower of Fate,1.5%,1.5%,4.0%,1.2%,8.9%,1.2%
+Accessory,Revenge of Goujin,7.0%,2.8%,16.4%,3.7%,25.6%,4.0%
+Accessory,Feather Duster,0.0%,1.2%,0.2%,1.2%,0.9%,1.0%

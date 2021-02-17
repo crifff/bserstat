@@ -17,10 +17,13 @@ interface Row {
   squadPickRate: number;
 }
 
-function makeData(data: any): Row[] {
+function makeData(data: BserStat.Armor.Response | undefined): Row[] {
   let result: Row[] = []
-  if (data.TypeList.length === 0) {
+  if (data === undefined) {
     return result
+  }
+  if (data.TypeList.length === 0) {
+    return result;
   }
 
   function extracted(armorType: any, armor: any) {
@@ -79,8 +82,8 @@ interface UserProp {
 
 function Armor(prop: UserProp) {
   const {t} = useTranslate();
-  const [json, setJson] = useState({TypeList: []});
-  const [oldJson, setOldJson] = useState({TypeList: []});
+  const [json, setJson] = useState<BserStat.Armor.Response>();
+  const [oldJson, setOldJson] = useState<BserStat.Armor.Response>();
 
   let {tier} = useParams<{
     tier: string
@@ -97,7 +100,7 @@ function Armor(prop: UserProp) {
     if (label === "") {
       return
     }
-    let url = "https://storage.googleapis.com/bserstat/data/"
+    let url = "/data/"
     url += label + "/"
     if (tier === "all") {
       url += "armor_all.json"
@@ -141,33 +144,54 @@ function Armor(prop: UserProp) {
     </div>
   }
 
-  function valueCell(mode: string, column: string, isRawNumber = false, isReverseColor = false): (text: number, record: any) => any {
-    return function (text: number, record: any): any {
-      // console.log(record.armorTypeName, record.armorName, column)
-      let old: any = null
-      if (oldJson.TypeList.length !== 0) {
-        const tmp1: any = oldJson.TypeList.find((el: any) => {
-          return el.Name === record.armorTypeName
-        })
-        if (tmp1 !== undefined) {
-          // console.log("tmp1: ", tmp1, record.armorName)
-          const tmp2: any = tmp1.ArmorList.find((el: any) => {
-            return el.Name === record.armorName
-          })
-          if (tmp2 !== undefined) {
-            // console.log("tmp2: ", tmp2)
-            const tmp3: any = tmp2.ModeList.find((el: any) => {
-              return el.Mode === mode
-            })
-            // console.log("tmp3: ", tmp3)
 
-            if (tmp3.hasOwnProperty(column)) {
-              // console.log("winrate: ", tmp3[column])
-              old = tmp3[column]
+  function search(json: BserStat.Armor.Response, name: string, mode: string, column: string): number | null {
+    for (const type of json.TypeList) {
+      for (const armor of type.ArmorList) {
+        if (armor.Name == name) {
+          for (const m of armor.ModeList) {
+            if (m.Mode == mode && m.hasOwnProperty(column)) {
+              return m[column]
             }
           }
         }
+
       }
+    }
+    return null
+  }
+
+  function valueCell(mode: string, column: string, isRawNumber = false, isReverseColor = false): (text: number, record: any) => any {
+    return function (text: number, record: any): any {
+      // console.log(record.armorTypeName, record.armorName, column)
+      let old: number | null = null
+      if (oldJson === undefined) {
+        return null
+      }
+      old = search(oldJson, record.armorName, mode, column)
+      // if (oldJson.TypeList.length !== 0) {
+      //   const tmp1: any = oldJson.TypeList.find((el: any) => {
+      //     return el.Name === record.armorTypeName
+      //   });
+      //   if (tmp1 !== undefined) {
+      //     // console.log("tmp1: ", tmp1, record.armorName)
+      //     const tmp2: any = tmp1.ArmorList.find((el: any) => {
+      //       return el.Name === record.armorName
+      //     })
+      //     if (tmp2 !== undefined) {
+      //       // console.log("tmp2: ", tmp2)
+      //       const tmp3: any = tmp2.ModeList.find((el: any) => {
+      //         return el.Mode === mode
+      //       })
+      //       // console.log("tmp3: ", tmp3)
+      //
+      //       if (tmp3.hasOwnProperty(column)) {
+      //         // console.log("winrate: ", tmp3[column])
+      //         old = tmp3[column]
+      //       }
+      //     }
+      //   }
+      // }
       return valueRender(text, old, isRawNumber, isReverseColor);
     }
   }
@@ -178,8 +202,11 @@ function Armor(prop: UserProp) {
     value: string
   }
 
-  function ArmorTypeFilter(json: { TypeList: any[] }) {
-    let uniqueArmorTypeList: FilterSet[] = []
+  function ArmorTypeFilter(json: BserStat.Armor.Response | undefined) {
+    if (json === undefined) {
+      return null
+    }
+    let uniqueArmorTypeList: FilterSet[] = [];
     json.TypeList.forEach((armorType: any) => {
       if (armorType.Name === "") {
         return
@@ -189,7 +216,10 @@ function Armor(prop: UserProp) {
     return uniqueArmorTypeList;
   }
 
-  function ArmorFilter(json: { TypeList: any[] }) {
+  function ArmorFilter(json: BserStat.Armor.Response | undefined) {
+    if (json === undefined) {
+      return null
+    }
     let uniqueArmorList: FilterSet[] = []
     json.TypeList.forEach((armorType: any) => {
       if (armorType.WeaponTypeList === null) {
