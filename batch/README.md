@@ -1,6 +1,6 @@
 データ更新用バッチ
 
-## 実行
+## 最新のstatsを取得してGCSに保存
 ```
- GOOGLE_APPLICATION_CREDENTIALS=***.json go run ./cmd
+ GOOGLE_APPLICATION_CREDENTIALS=***.json go run ./cmd/update
 ```

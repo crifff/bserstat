@@ -5,6 +5,7 @@ import (
 	"cloud.google.com/go/storage"
 	"context"
 	"encoding/json"
+	"github.com/crifff/bserstats/batch/external/cache"
 	"log"
 	"path/filepath"
 )
@@ -43,13 +44,19 @@ func UploadJSON(objectPath string, data interface{}) error {
 }
 
 func UploadFile(objectPath string, data []byte) error {
+
+	if err := cache.WriteCache(objectPath, data); err != nil {
+		return err
+	}
+	return nil
+
 	ctx := context.Background()
 	client, err := storage.NewClient(ctx)
 	if err != nil {
 		return err
 	}
 
-	log.Printf("UploadFile to %s", objectPath)
+	log.Printf("Upload to %s", objectPath)
 	wc := client.Bucket(bucketName).Object(objectPath).NewWriter(ctx)
 	switch filepath.Ext(objectPath) {
 	case ".csv":
@@ -74,3 +81,4 @@ func UploadFile(objectPath string, data []byte) error {
 	}
 	return nil
 }
+

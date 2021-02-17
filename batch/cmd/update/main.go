@@ -30,6 +30,9 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+
+	//csv, err = cache.ReadCSV("20210208")
+
 	result := model.NewRankData(csv)
 
 	uploadAll(result)
