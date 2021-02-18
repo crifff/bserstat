@@ -1,5 +1,5 @@
 .border-left {
-    border-left-width: 3px;
+    border-left: 3px solid #303030 !important;
 }
 
 .menu-row {
@@ -8,6 +8,10 @@
 
 .row-base-win-rate {
     background-color: #595014;
+}
+
+.ant-table-tbody>tr.row-base-win-rate:hover>td{
+    background-color: #7c6e14 !important;
 }
 
 .row-base-win-rate .ant-table-column-sort {
