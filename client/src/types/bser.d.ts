@@ -21,6 +21,7 @@ namespace BserStat {
       PickRate: number
       AverageRank: number
       PlayerKill: number
+      MMREfficiency: number
       [key: string]: number
     }
   }

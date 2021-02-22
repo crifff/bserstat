@@ -24,11 +24,12 @@ type RankWeapon struct {
 	ModeList []Rate
 }
 type Rate struct {
-	Mode        string
-	WinRate     float64
-	PickRate    float64
-	PlayerKill  float64
-	AverageRank float64
+	Mode          string
+	WinRate       float64
+	PickRate      float64
+	PlayerKill    float64
+	AverageRank   float64
+	MMREfficiency float64
 }
 
 func NewAllCharacterRanking(data [][]string) CharacterRanking {
@@ -87,14 +88,17 @@ func (r CharacterRanking) Header() []string {
 		"Solo Pick Rate",
 		"Solo Player Kill",
 		"Solo Average Rank",
+		"Solo MMR Efficiency",
 		"Duo Win Rate",
 		"Duo Pick Rate",
 		"Duo Player Kill",
 		"Duo Average Rank",
+		"Duo MMR Efficiency",
 		"Squad Win Rate",
 		"Squad Pick Rate",
 		"Squad Player Kill",
 		"Squad Average Rank",
+		"Squad MMR Efficiency",
 	}
 }
 
@@ -143,23 +147,26 @@ func extractUserRank(label string, data [][]string) []Character {
 func userRankLine(data [][]string, i, j int) []Rate {
 	return []Rate{
 		{
-			Mode:        "Solo",
-			WinRate:     util.ParseFloat(data[i][j+2]),
-			PickRate:    util.ParseFloat(data[i][j+3]),
-			PlayerKill:  util.ParseFloat(data[i][j+4]),
-			AverageRank: util.ParseFloat(data[i][j+5]),
+			Mode:          "Solo",
+			WinRate:       util.ParseFloat(data[i][j+2]),
+			PickRate:      util.ParseFloat(data[i][j+3]),
+			PlayerKill:    util.ParseFloat(data[i][j+4]),
+			AverageRank:   util.ParseFloat(data[i][j+5]),
+			MMREfficiency: util.ParseFloat(data[i][j+6]),
 		}, {
-			Mode:        "Duo",
-			WinRate:     util.ParseFloat(data[i][j+6]),
-			PickRate:    util.ParseFloat(data[i][j+7]),
-			PlayerKill:  util.ParseFloat(data[i][j+8]),
-			AverageRank: util.ParseFloat(data[i][j+9]),
+			Mode:          "Duo",
+			WinRate:       util.ParseFloat(data[i][j+7]),
+			PickRate:      util.ParseFloat(data[i][j+8]),
+			PlayerKill:    util.ParseFloat(data[i][j+9]),
+			AverageRank:   util.ParseFloat(data[i][j+10]),
+			MMREfficiency: util.ParseFloat(data[i][j+11]),
 		}, {
-			Mode:        "Squad",
-			WinRate:     util.ParseFloat(data[i][j+10]),
-			PickRate:    util.ParseFloat(data[i][j+11]),
-			PlayerKill:  util.ParseFloat(data[i][j+12]),
-			AverageRank: util.ParseFloat(data[i][j+13]),
+			Mode:          "Squad",
+			WinRate:       util.ParseFloat(data[i][j+12]),
+			PickRate:      util.ParseFloat(data[i][j+13]),
+			PlayerKill:    util.ParseFloat(data[i][j+14]),
+			AverageRank:   util.ParseFloat(data[i][j+15]),
+			MMREfficiency: util.ParseFloat(data[i][j+16]),
 		},
 	}
 }

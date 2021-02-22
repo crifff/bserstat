@@ -18,6 +18,7 @@ const dictionary_ja = new Map<string, string>([
   ['Pick Rate', 'ピック率'],
   ['Player Kill', 'キル数'],
   ['Average Rank', '平均順位'],
+  ['MMR Efficiency', 'MMR効率'],
   ['Adriana', 'アドリアナ'],
   ['Aya', 'アヤ'],
   ['Chiara', 'キアラ'],

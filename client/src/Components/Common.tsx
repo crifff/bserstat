@@ -49,6 +49,9 @@ export function Filter(list: string[], lang: SupportedLocales) {
 
 export function valueRender(text: number, old: number | null, rawNumber: boolean, reverse: boolean) {
   const minimalFontSize = "11px"
+  if (text === undefined) {
+    text = 0
+  }
   if (rawNumber) {
     return <>
       {(text === 0) ? "-" : text.toFixed(1)}

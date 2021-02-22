@@ -12,14 +12,17 @@ interface Row {
   soloPickRate: number;
   soloPlayerKill: number;
   soloAverageRank: number;
+  soloMMREfficiency: number;
   duoWinRate: number;
   duoPickRate: number;
   duoAverageRank: number;
   duoPlayerKill: number;
+  duoMMREfficiency: number;
   squadWinRate: number;
   squadPickRate: number;
   squadAverageRank: number;
   squadPlayerKill: number;
+  squadMMREfficiency: number;
 }
 
 function makeData(data: BserStat.Character.Response | undefined): Row[] {
@@ -39,14 +42,17 @@ function makeData(data: BserStat.Character.Response | undefined): Row[] {
       soloPickRate: 0,
       soloAverageRank: 0,
       soloPlayerKill: 0,
+      soloMMREfficiency:0,
       duoWinRate: 0,
       duoPickRate: 0,
       duoAverageRank: 0,
       duoPlayerKill: 0,
+      duoMMREfficiency:0,
       squadWinRate: 0,
       squadPickRate: 0,
       squadAverageRank: 0,
       squadPlayerKill: 0,
+      squadMMREfficiency:0,
     }
     weapon.ModeList.forEach((mode: any) => {
       // console.log(mode)
@@ -55,18 +61,21 @@ function makeData(data: BserStat.Character.Response | undefined): Row[] {
         d.soloPickRate = (mode.PickRate)
         d.soloPlayerKill = (mode.PlayerKill)
         d.soloAverageRank = (mode.AverageRank)
+        d.soloMMREfficiency = (mode.MMREfficiency)
       }
       if (mode.Mode === "Duo") {
         d.duoWinRate = (mode.WinRate)
         d.duoPickRate = (mode.PickRate)
         d.duoPlayerKill = (mode.PlayerKill)
         d.duoAverageRank = (mode.AverageRank)
+        d.duoMMREfficiency = (mode.MMREfficiency)
       }
       if (mode.Mode === "Squad") {
         d.squadWinRate = (mode.WinRate)
         d.squadPickRate = (mode.PickRate)
         d.squadPlayerKill = (mode.PlayerKill)
         d.squadAverageRank = (mode.AverageRank)
+        d.squadMMREfficiency = (mode.MMREfficiency)
       }
     })
     return d;
@@ -315,6 +324,13 @@ function Character(prop: UserProp) {
           render: valueCell("Solo", "AverageRank", true, true),
           sorter: (a: Row, b: Row) => a.soloAverageRank - b.soloAverageRank,
         },
+        {
+          title: t('MMR Efficiency'),
+          dataIndex: 'soloMMREfficiency',
+          align: "right",
+          render: valueCell("Solo", "MMR Efficiency", true, true),
+          sorter: (a: Row, b: Row) => a.soloMMREfficiency - b.soloMMREfficiency,
+        },
       ]
     },
     {
@@ -351,6 +367,13 @@ function Character(prop: UserProp) {
           render: valueCell("Duo", "AverageRank", true, true),
           sorter: (a: Row, b: Row) => a.duoAverageRank - b.duoAverageRank,
         },
+        {
+          title: t('MMR Efficiency'),
+          dataIndex: 'duoMMREfficiency',
+          align: "right",
+          render: valueCell("Duo", "MMR Efficiency", true, true),
+          sorter: (a: Row, b: Row) => a.duoMMREfficiency - b.duoMMREfficiency,
+        },
       ]
     },
     {
@@ -386,6 +409,13 @@ function Character(prop: UserProp) {
           align: "right",
           render: valueCell("Squad", "AverageRank", true, true),
           sorter: (a: Row, b: Row) => a.squadAverageRank - b.squadAverageRank,
+        },
+        {
+          title: t('MMR Efficiency'),
+          dataIndex: 'squadMMREfficiency',
+          align: "right",
+          render: valueCell("Squad", "MMR Efficiency", true, true),
+          sorter: (a: Row, b: Row) => a.squadMMREfficiency - b.squadMMREfficiency,
         },
       ]
     },
