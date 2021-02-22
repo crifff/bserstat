@@ -170,3 +170,28 @@ func userRankLine(data [][]string, i, j int) []Rate {
 		},
 	}
 }
+
+
+func userRankLineOld(data [][]string, i, j int) []Rate {
+	return []Rate{
+		{
+			Mode:          "Solo",
+			WinRate:       util.ParseFloat(data[i][j+2]),
+			PickRate:      util.ParseFloat(data[i][j+3]),
+			PlayerKill:    util.ParseFloat(data[i][j+4]),
+			AverageRank:   util.ParseFloat(data[i][j+5]),
+		}, {
+			Mode:          "Duo",
+			WinRate:       util.ParseFloat(data[i][j+6]),
+			PickRate:      util.ParseFloat(data[i][j+7]),
+			PlayerKill:    util.ParseFloat(data[i][j+8]),
+			AverageRank:   util.ParseFloat(data[i][j+9]),
+		}, {
+			Mode:          "Squad",
+			WinRate:       util.ParseFloat(data[i][j+10]),
+			PickRate:      util.ParseFloat(data[i][j+11]),
+			PlayerKill:    util.ParseFloat(data[i][j+12]),
+			AverageRank:   util.ParseFloat(data[i][j+13]),
+		},
+	}
+}

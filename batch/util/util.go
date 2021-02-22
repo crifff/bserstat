@@ -39,6 +39,9 @@ func Exists(name string) bool {
 }
 
 func ParseFloat(s string) float64 {
+	if s == "insufficient data" {
+		return -99999
+	}
 	num, err := strconv.ParseFloat(strings.TrimSpace(strings.Trim(s, "%")), 64)
 	if err != nil {
 		return 0.0

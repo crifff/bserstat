@@ -24,9 +24,11 @@ func main() {
 		panic(err)
 	}
 
-	//csv, err = cache.ReadCSV("20210208")
+	//csv, err = local.ReadCSV("20210215")
 
 	result := model.NewRankData(csv)
+
+	saveAll(result)
 
 	indexes, err := local.GetIndexJson()
 	if err != nil {
@@ -43,7 +45,6 @@ func main() {
 			return indexes[i].Label > indexes[j].Label
 		}) //fmt.Printf("%#v\n", indexes)
 
-		saveAll(result)
 		if err := local.SaveJSON("../client/public/data/index.json", indexes); err != nil {
 			panic(err)
 		}
