@@ -8,6 +8,7 @@ import { Col, Layout, Menu, Radio, RadioChangeEvent, Row } from 'antd';
 import { BrowserRouter as Router, Link, Redirect, Route, Switch, useHistory, useParams } from "react-router-dom";
 import { useTranslate } from './Translate/hook';
 import About from "./Components/About";
+import axios from "axios";
 
 const {Content} = Layout;
 
@@ -38,22 +39,29 @@ function App() {
     "period": "2021. 1. 28 ~ 1. 31"
   }]
 
-  const [data, setData] = useState<IndexData[]>(initialData);
+  const [data, setData] = useState<IndexData[]>([{
+    "label": "",
+    "updated": "",
+    "period": ""
+  },{
+    "label": "",
+    "updated": "",
+    "period": ""
+  }]);
 
-  // function fetchUserRankJson() {
-  //   const url = "https://storage.googleapis.com/bserstat/data/index.json"
-  //   axios.get<any>(url)
-  //     .then((response: any) => {
-  //       setData(response.data)
-  //     })
-  //     .catch((err: any) => {
-  //       console.error(err)
-  //     })
-  // }
-  // useEffect(() => {
-  //   // キャッシュが強烈に残るので一旦fetchで取らずinitialDataに書く
-  //   // fetchUserRankJson();
-  // }, []);
+  function fetchUserRankJson() {
+    const url = "/data/index.json"
+    axios.get<any>(url)
+      .then((response: any) => {
+        setData(response.data)
+      })
+      .catch((err: any) => {
+        console.error(err)
+      })
+  }
+  useEffect(() => {
+    fetchUserRankJson();
+  }, []);
   
   const label = data[0].label
   const period = data[0].period
