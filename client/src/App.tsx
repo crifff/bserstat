@@ -25,19 +25,6 @@ interface IndexData {
 }
 
 function App() {
-  const initialData: IndexData[] = [{
-    "label": "20210215",
-    "updated": "2021. 2. 15",
-    "period": "2021. 2. 11 ~ 14"
-  }, {
-    "label": "20210208",
-    "updated": "2021. 2. 8",
-    "period": "2021. 2. 4 ~ 7"
-  }, {
-    "label": "20210201",
-    "updated": "2021. 2. 8",
-    "period": "2021. 1. 28 ~ 1. 31"
-  }]
 
   const [data, setData] = useState<IndexData[]>([{
     "label": "",
@@ -102,10 +89,6 @@ const Header: FC = (prop): any => {
     category: string
     tier: string
   }>();
-  console.log("tier:", useParams<{
-    category: string
-    tier: string
-  }>())
 
   const {t, lang, setLang} = useTranslate();
 
