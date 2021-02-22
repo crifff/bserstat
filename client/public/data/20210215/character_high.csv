@@ -1,4 +1,4 @@
-Character,Weapon,Solo Win Rate,Solo Pick Rate,Solo Player Kill,Solo Average Rank,Duo Win Rate,Duo Pick Rate,Duo Player Kill,Duo Average Rank,Squad Win Rate,Squad Pick Rate,Squad Player Kill,Squad Average Rank
+Character,Weapon,Solo Win Rate,Solo Pick Rate,Solo Player Kill,Solo Average Rank,Solo MMR Efficiency,Duo Win Rate,Duo Pick Rate,Duo Player Kill,Duo Average Rank,Duo MMR Efficiency,Squad Win Rate,Squad Pick Rate,Squad Player Kill,Squad Average Rank,Squad MMR Efficiency
 Base Win Rate,,6.3%,2.9%,1.0,9.3,14.2%,2.9%,1.2,4.6,18.5%,2.9%,1.0,3.2
 Adriana,Throw,5.5%,1.2%,1.2,9.9,18.2%,2.1%,1.2,4.2,20.3%,3.5%,0.8,3.2
 Aya,Pistol,5.1%,2.9%,1.1,9.8,9.4%,1.4%,0.9,5.2,15.7%,3.2%,1.2,3.2

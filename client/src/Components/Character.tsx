@@ -182,6 +182,7 @@ function Character(prop: UserProp) {
             // console.log("tmp3: ", tmp3)
             if (tmp3 !== undefined && tmp3.hasOwnProperty(column)) {
               // console.log("winrate: ", tmp3[column])
+              console.log(record.characterName,record.weaponName,mode,column,tmp3)
               old = tmp3[column]
             }
           }

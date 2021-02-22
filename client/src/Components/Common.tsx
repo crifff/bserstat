@@ -47,6 +47,13 @@ export function Filter(list: string[], lang: SupportedLocales) {
   return uniqueList;
 }
 
+function alter(n: number): number {
+  if (n <= - 99999) {
+    return 0
+  }
+  return n
+}
+
 export function valueRender(text: number, old: number | null, rawNumber: boolean, reverse: boolean) {
   const minimalFontSize = "11px"
   if (text === undefined) {
@@ -54,33 +61,46 @@ export function valueRender(text: number, old: number | null, rawNumber: boolean
   }
   if (rawNumber) {
     return <>
-      {(text === 0) ? "-" : text.toFixed(1)}
+      {(text <= - 99999) ? "-" : text.toFixed(1)}
       {(old !== null) ?
 
-        ((text - old) === 0) ?
-          <div style={{fontSize: minimalFontSize}} className={"value-color-zero"}>±0.0</div> : ((text - old) > 0 ?
-            <div style={{fontSize: minimalFontSize}} className={plusColorClassName(reverse)}>
-              +{((text - old).toFixed(1))}
-            </div> :
-            <div style={{fontSize: minimalFontSize}} className={minusColorClassName(reverse)}>
-              {((text - old).toFixed(1))}
-            </div>
+        ((old <= - 99999) ?
+          <div style={{fontSize: minimalFontSize}} className={"value-color-zero"}>-</div>
+          :
+          (alter(text) - alter(old)) === 0) ?
+          <div style={{fontSize: minimalFontSize}} className={"value-color-zero"}>±0.0</div>
+          :
+          ((alter(text) - alter(old)) > 0 ?
+              <div style={{fontSize: minimalFontSize}} className={plusColorClassName(reverse)}>
+                +{((alter(text) - alter(old)).toFixed(1))}
+              </div>
+              :
+              <div style={{fontSize: minimalFontSize}} className={minusColorClassName(reverse)}>
+                {((alter(text) - alter(old)).toFixed(1))}
+              </div>
           )
         : null}
     </>;
   }
+
   return <>
-    {(text === 0.0) ? "-" : (text * 100).toFixed(1) + "%"}
+    {(text <= - 99999) ? "-" : (text * 100).toFixed(1) + "%"}
 
     {(old !== null) ?
-      ((text - old) === 0) ?
-        <div style={{fontSize: minimalFontSize}} className={"value-color-zero"}>±0.0</div> : ((text - old) > 0 ?
-          <div style={{fontSize: minimalFontSize}} className={plusColorClassName(reverse)}>
-            +{((text - old) * 100).toFixed(1) + "%"}
-          </div> :
-          <div style={{fontSize: minimalFontSize}} className={minusColorClassName(reverse)}>
-            {((text - old) * 100).toFixed(1) + "%"}
-          </div>
+      ((old <= - 99999) ?
+        <div style={{fontSize: minimalFontSize}} className={"value-color-zero"}>-</div>
+        :
+        (alter(text) - alter(old)) === 0) ?
+        <div style={{fontSize: minimalFontSize}} className={"value-color-zero"}>±0.0</div>
+        :
+        ((alter(text) - alter(old)) > 0 ?
+            <div style={{fontSize: minimalFontSize}} className={plusColorClassName(reverse)}>
+              +{((alter(text) - alter(old)) * 100).toFixed(1) + "%"}
+            </div>
+            :
+            <div style={{fontSize: minimalFontSize}} className={minusColorClassName(reverse)}>
+              {((alter(text) - alter(old)) * 100).toFixed(1) + "%"}
+            </div>
         )
       : null}
   </>;
