@@ -25,7 +25,7 @@ func FindLabelPosition(label string, data [][]string) (int, int, error) {
 
 func IsEmptyLine(start, limit int, line []string) bool {
 	for i := start; i < start+limit; i++ {
-		if line[i] != "" {
+		if line[i] != "" && !strings.HasPrefix(line[i], "*") {
 			return false
 		}
 	}
