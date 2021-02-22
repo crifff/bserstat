@@ -235,6 +235,8 @@ const dictionary_ja = new Map<string, string>([
   ['Revenge of Goujin', '戉王鳩淺'],
   ['Feather Duster', '埃払い'],
   ['Tindalos Band', 'ティンダロスの腕輪'],
+  ['Sniper Scope', '狙撃スコープ'],
+  ['Buccaneer Doubloon', '海賊の証票'],
 ])
 
 export { dictionary_ja }
