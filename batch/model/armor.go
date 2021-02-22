@@ -19,6 +19,7 @@ type ArmorType struct {
 
 type Armor struct {
 	Name     string
+	//Code     int
 	ModeList []Rate
 }
 
@@ -163,7 +164,8 @@ func extractArmorRank(label string, offset int, data [][]string) []ArmorType {
 		}
 
 		w := Armor{
-			Name:     data[i][j0+1],
+			Name: sanitize(data[i][j0+1]),
+			//Code:     masterdata.CodeFromEngName(sanitize(data[i][j0+1])),
 			ModeList: armorRankLine(data, i, j0+2+offset),
 		}
 		c.ArmorList = append(c.ArmorList, w)

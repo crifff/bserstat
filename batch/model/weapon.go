@@ -5,6 +5,7 @@ import (
 	"encoding/csv"
 	"fmt"
 	util "github.com/crifff/bserstats/batch/util"
+	"strings"
 )
 
 type WeaponRanking struct {
@@ -21,6 +22,7 @@ type WeaponType struct {
 }
 type Weapon struct {
 	Name     string
+	//Code     int
 	ModeList []Rate
 }
 
@@ -176,12 +178,18 @@ func extractWeaponRank(label string, offset int, data [][]string) []WeaponCharac
 			}
 		}
 		w := Weapon{
-			Name:     data[i][j0+2],
+			Name: sanitize(data[i][j0+2]),
+			//Code:     masterdata.CodeFromEngName(sanitize(data[i][j0+2])),
 			ModeList: weaponRankLine(data, i, j0+3+offset),
 		}
 		t.WeaponList = append(t.WeaponList, w)
 	}
 	return Characters
+}
+
+func sanitize(s string) string {
+	s = strings.TrimSpace(s)
+	return s
 }
 
 func dumpWeaponRanking(d WeaponRanking) {

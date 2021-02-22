@@ -5,9 +5,12 @@ import (
 	"fmt"
 	"github.com/PuerkitoBio/goquery"
 	"github.com/crifff/bserstats/batch/util"
+	"io"
+	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
+	"regexp"
 	"strings"
 	"time"
 )
@@ -71,4 +74,45 @@ func FetchCSV() ([][]string, error) {
 	err = writer.WriteAll(data)
 
 	return data, err
+}
+
+func DownloadXlsx() (io.ReadCloser, error) {
+	spreadsheetURL, err := getSpreadSheetURL(officialSiteURL)
+	if err != nil {
+		return nil, err
+	}
+	reg := regexp.MustCompile("pubhtml.*$")
+	url := reg.ReplaceAllString(spreadsheetURL, "") + "pub?output=xlsx"
+
+	log.Println("download from ", url)
+	hashName := time.Now().Format("2006-01-02")
+	filename := fmt.Sprintf(".cache/%x.xlsx", hashName)
+	if util.Exists(filename) {
+		f, err := os.Open(filename)
+		if err != nil {
+			return nil, err
+		}
+		log.Println("read from cache: ", filename)
+		return f, nil
+	}
+
+	res, err := http.Get(url)
+	if err != nil {
+		return nil, err
+	}
+	data, err := ioutil.ReadAll(res.Body)
+	if err != nil {
+		return nil, err
+	}
+
+	file, err := os.OpenFile(filename, os.O_WRONLY|os.O_CREATE, 0600)
+	if err != nil {
+		return nil, err
+	}
+	defer file.Close()
+	if _, err := file.Write(data); err != nil {
+		return nil, err
+	}
+
+	return res.Body, nil
 }

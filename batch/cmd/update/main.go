@@ -1,22 +1,15 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
-	"github.com/crifff/bserstats/batch/external/gcs"
+	"github.com/crifff/bserstats/batch/external/local"
 	"github.com/crifff/bserstats/batch/external/officialsite"
 	"github.com/crifff/bserstats/batch/model"
 	"sort"
 	"time"
 )
 
-type Index struct {
-	Label   string `json:"label"`
-	Updated string `json:"updated"`
-	Period  string `json:"period"`
-}
-
-func HasLabel(label string, indexes []Index) bool {
+func HasLabel(label string, indexes []model.Index) bool {
 	for _, index := range indexes {
 		if index.Label == label {
 			return true
@@ -35,39 +28,23 @@ func main() {
 
 	result := model.NewRankData(csv)
 
-	uploadAll(result)
-
-	//fmt.Printf("%#v", result.WeaponRankingAll.CharacterList[1])
-
-	b, err := gcs.DownloadIndex()
+	indexes, err := local.GetIndexJson()
 	if err != nil {
 		panic(err)
 	}
 
-	var indexes []Index
-
-	if err := json.Unmarshal(b, &indexes); err != nil {
-		panic(err)
-	}
-
-	//fmt.Printf("%#v\n", result.Label())
-
 	if !HasLabel(result.Label(), indexes) {
-		indexes = append(indexes, Index{
+		indexes = append(indexes, model.Index{
 			Label:   result.Label(),
 			Updated: result.Updated,
 			Period:  result.Period,
 		})
 		sort.Slice(indexes, func(i, j int) bool {
 			return indexes[i].Label > indexes[j].Label
-		})
-		//fmt.Printf("%#v\n", indexes)
+		}) //fmt.Printf("%#v\n", indexes)
 
-		v, err := json.Marshal(indexes)
-		if err != nil {
-			panic(err)
-		}
-		if err := gcs.UploadFile("data/index.json", v); err != nil {
+		saveAll(result)
+		if err := local.SaveJSON("../client/public/data/index.json", indexes); err != nil {
 			panic(err)
 		}
 	}
@@ -76,24 +53,24 @@ func main() {
 
 }
 
-func uploadAll(result model.RankData) {
+func saveAll(result model.RankData) {
 	layout := "2006. 1. 2"
 
 	t, _ := time.Parse(layout, result.Updated)
 
-	dir := fmt.Sprintf("data/%s/", t.Format("20060102"))
-	gcs.UploadJSON(dir+"all.json", result)
-	gcs.UploadJSON(dir+"character_all.json", result.CharacterRankingAll)
-	gcs.UploadJSON(dir+"character_high.json", result.CharacterRankingHighTier)
-	gcs.UploadJSON(dir+"weapon_all.json", result.WeaponRankingAll)
-	gcs.UploadJSON(dir+"weapon_high.json", result.WeaponRankingHighTier)
-	gcs.UploadJSON(dir+"armor_all.json", result.ArmorRankingAll)
-	gcs.UploadJSON(dir+"armor_high.json", result.ArmorRankingHighTier)
+	dir := fmt.Sprintf("../client/public/data/%s/", t.Format("20060102"))
+	local.SaveJSON(dir+"all.json", result)
+	local.SaveJSON(dir+"character_all.json", result.CharacterRankingAll)
+	local.SaveJSON(dir+"character_high.json", result.CharacterRankingHighTier)
+	local.SaveJSON(dir+"weapon_all.json", result.WeaponRankingAll)
+	local.SaveJSON(dir+"weapon_high.json", result.WeaponRankingHighTier)
+	local.SaveJSON(dir+"armor_all.json", result.ArmorRankingAll)
+	local.SaveJSON(dir+"armor_high.json", result.ArmorRankingHighTier)
 
-	gcs.UploadFile(dir+"character_all.csv", []byte(result.CharacterRankingAll.CSV()))
-	gcs.UploadFile(dir+"character_high.csv", []byte(result.CharacterRankingHighTier.CSV()))
-	gcs.UploadFile(dir+"weapon_all.csv", []byte(result.WeaponRankingAll.CSV()))
-	gcs.UploadFile(dir+"weapon_high.csv", []byte( result.WeaponRankingHighTier.CSV()))
-	gcs.UploadFile(dir+"armor_all.csv", []byte(result.ArmorRankingAll.CSV()))
-	gcs.UploadFile(dir+"armor_high.csv", []byte(result.ArmorRankingHighTier.CSV()))
+	local.SaveFile(dir+"character_all.csv", []byte(result.CharacterRankingAll.CSV()))
+	local.SaveFile(dir+"character_high.csv", []byte(result.CharacterRankingHighTier.CSV()))
+	local.SaveFile(dir+"weapon_all.csv", []byte(result.WeaponRankingAll.CSV()))
+	local.SaveFile(dir+"weapon_high.csv", []byte( result.WeaponRankingHighTier.CSV()))
+	local.SaveFile(dir+"armor_all.csv", []byte(result.ArmorRankingAll.CSV()))
+	local.SaveFile(dir+"armor_high.csv", []byte(result.ArmorRankingHighTier.CSV()))
 }
