@@ -1,68 +1,68 @@
 .border-left {
-    border-left: 3px solid #303030 !important;
+  border-left: 3px solid #303030 !important;
 }
 
 .menu-row {
-    background-color: #141414;
+  background-color: #141414;
 }
 
 .row-base-win-rate {
-    background-color: #595014;
+  background-color: #595014;
 }
 
-.ant-table-tbody>tr.row-base-win-rate:hover>td{
-    background-color: #7c6e14 !important;
+.ant-table-tbody > tr.row-base-win-rate:hover > td {
+  background-color: #7c6e14 !important;
 }
 
 .row-base-win-rate .ant-table-column-sort {
-    background-color: #7c6e14;
+  background-color: #7c6e14;
 }
 
 .ant-table-thead th {
-    position: -webkit-sticky;
-    position: sticky !important;
-    white-space: nowrap;
-    top: 0;
-    z-index: 100;
+  position: -webkit-sticky;
+  position: sticky !important;
+  white-space: nowrap;
+  top: 0;
+  z-index: 100;
 }
 
 .value-color-zero {
-    color: #777;
+  color: #777;
 }
 
-.value-color-red{
-    color:#ff4d4f;
+.value-color-red {
+  color: #ff4d4f;
 }
-.value-color-green{
-    color: #52c41a;
-}
-
-.thumbnail-weapon{
-    background-color: #333;
-    width: 70px;
-    height: 40px;
-    border:1px solid #303030;
-    border-radius: 6px;
-    margin-right: 1em;
+.value-color-green {
+  color: #52c41a;
 }
 
-.thumbnail-character{
-    background-color: #333;
-    width: 30px;
-    height: 40px;
-    border:1px solid #303030;
-    border-radius: 6px;
-    margin-right: 1em;
-}
-.thumbnail-weaponType{
-    background-color: #333;
-    width: 40px;
-    height: 40px;
-    border:1px solid #303030;
-    border-radius: 6px;
-    margin-right: 1em;
+.thumbnail-weapon {
+  background-color: #333;
+  width: 70px;
+  height: 40px;
+  border: 1px solid #303030;
+  border-radius: 6px;
+  margin-right: 1em;
 }
 
-.ant-menu-horizontal{
-    border-bottom:none !important;
+.thumbnail-character {
+  background-color: #333;
+  width: 30px;
+  height: 40px;
+  border: 1px solid #303030;
+  border-radius: 6px;
+  margin-right: 1em;
+}
+.thumbnail-weaponType {
+  background-color: #333;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #303030;
+  border-radius: 6px;
+  margin-right: 1em;
+}
+
+.ant-menu-horizontal {
+  border-bottom: none !important;
 }

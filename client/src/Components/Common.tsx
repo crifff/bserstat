@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { SupportedLocales, t } from "../Translate/translate";
+import React, { useEffect } from "react"
+import { SupportedLocales, t } from "../Translate/translate"
 
 export function stringSort(a: string, b: string): number {
   if (a === null || a === undefined) {
@@ -9,17 +9,17 @@ export function stringSort(a: string, b: string): number {
     b = ""
   }
   // console.log(b)
-  const nameA = a.toUpperCase(); // 大文字と小文字を無視する
-  const nameB = b.toUpperCase(); // 大文字と小文字を無視する
+  const nameA = a.toUpperCase() // 大文字と小文字を無視する
+  const nameB = b.toUpperCase() // 大文字と小文字を無視する
   if (nameA < nameB) {
-    return - 1;
+    return -1
   }
   if (nameA > nameB) {
-    return 1;
+    return 1
   }
 
   // names must be equal
-  return 0;
+  return 0
 }
 
 function plusColorClassName(reverse: boolean): string {
@@ -31,7 +31,7 @@ function minusColorClassName(reverse: boolean): string {
 }
 
 interface FilterSet {
-  text: string;
+  text: string
   value: string
 }
 
@@ -42,13 +42,13 @@ export function Filter(list: string[], lang: SupportedLocales) {
     if (item === "") {
       return
     }
-    uniqueList.push({text: t(item, lang), value: item})
+    uniqueList.push({ text: t(item, lang), value: item })
   })
-  return uniqueList;
+  return uniqueList
 }
 
 function alter(n: number): number {
-  if (n <= - 99999) {
+  if (n <= -99999) {
     return 0
   }
   return n
@@ -60,64 +60,75 @@ export function valueRender(text: number, old: number | null, rawNumber: boolean
     text = 0
   }
   if (rawNumber) {
-    return <>
-      {(text <= - 99999) ? "-" : text.toFixed(1)}
-      {(old !== null) ?
-
-        ((old <= - 99999) ?
-          <div style={{fontSize: minimalFontSize}} className={"value-color-zero"}>-</div>
-          :
-          (alter(text) - alter(old)) === 0) ?
-          <div style={{fontSize: minimalFontSize}} className={"value-color-zero"}>±0.0</div>
-          :
-          ((alter(text) - alter(old)) > 0 ?
-              <div style={{fontSize: minimalFontSize}} className={plusColorClassName(reverse)}>
-                +{((alter(text) - alter(old)).toFixed(1))}
+    return (
+      <>
+        {text <= -99999 ? "-" : text.toFixed(1)}
+        {old !== null ? (
+          (
+            old <= -99999 ? (
+              <div style={{ fontSize: minimalFontSize }} className={"value-color-zero"}>
+                -
               </div>
-              :
-              <div style={{fontSize: minimalFontSize}} className={minusColorClassName(reverse)}>
-                {((alter(text) - alter(old)).toFixed(1))}
-              </div>
+            ) : (
+              alter(text) - alter(old) === 0
+            )
+          ) ? (
+            <div style={{ fontSize: minimalFontSize }} className={"value-color-zero"}>
+              ±0.0
+            </div>
+          ) : alter(text) - alter(old) > 0 ? (
+            <div style={{ fontSize: minimalFontSize }} className={plusColorClassName(reverse)}>
+              +{(alter(text) - alter(old)).toFixed(1)}
+            </div>
+          ) : (
+            <div style={{ fontSize: minimalFontSize }} className={minusColorClassName(reverse)}>
+              {(alter(text) - alter(old)).toFixed(1)}
+            </div>
           )
-        : null}
-    </>;
+        ) : null}
+      </>
+    )
   }
 
-  return <>
-    {(text <= - 99999) ? "-" : (text * 100).toFixed(1) + "%"}
+  return (
+    <>
+      {text <= -99999 ? "-" : (text * 100).toFixed(1) + "%"}
 
-    {(old !== null) ?
-      ((old <= - 99999) ?
-        <div style={{fontSize: minimalFontSize}} className={"value-color-zero"}>-</div>
-        :
-        (alter(text) - alter(old)) === 0) ?
-        <div style={{fontSize: minimalFontSize}} className={"value-color-zero"}>±0.0</div>
-        :
-        ((alter(text) - alter(old)) > 0 ?
-            <div style={{fontSize: minimalFontSize}} className={plusColorClassName(reverse)}>
-              +{((alter(text) - alter(old)) * 100).toFixed(1) + "%"}
+      {old !== null ? (
+        (
+          old <= -99999 ? (
+            <div style={{ fontSize: minimalFontSize }} className={"value-color-zero"}>
+              -
             </div>
-            :
-            <div style={{fontSize: minimalFontSize}} className={minusColorClassName(reverse)}>
-              {((alter(text) - alter(old)) * 100).toFixed(1) + "%"}
-            </div>
+          ) : (
+            alter(text) - alter(old) === 0
+          )
+        ) ? (
+          <div style={{ fontSize: minimalFontSize }} className={"value-color-zero"}>
+            ±0.0
+          </div>
+        ) : alter(text) - alter(old) > 0 ? (
+          <div style={{ fontSize: minimalFontSize }} className={plusColorClassName(reverse)}>
+            +{((alter(text) - alter(old)) * 100).toFixed(1) + "%"}
+          </div>
+        ) : (
+          <div style={{ fontSize: minimalFontSize }} className={minusColorClassName(reverse)}>
+            {((alter(text) - alter(old)) * 100).toFixed(1) + "%"}
+          </div>
         )
-      : null}
-  </>;
+      ) : null}
+    </>
+  )
 }
 
-type TitleOrGetter = string | (() => string);
+type TitleOrGetter = string | (() => string)
 
 export function useTitle(titleOrFn: TitleOrGetter, ...deps: React.DependencyList) {
-  const title = typeof titleOrFn === 'string' ? titleOrFn : titleOrFn();
-  useEffect(
-    () => {
-      document.title = title;
-    },
-    [title, ...deps]
-  );
+  const title = typeof titleOrFn === "string" ? titleOrFn : titleOrFn()
+  useEffect(() => {
+    document.title = title
+  }, [title, ...deps])
 }
-
 
 const imageNameMap: Map<string, string> = new Map([
   ["Thuận Thiên", "Thuan Thien"],

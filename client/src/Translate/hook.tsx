@@ -1,33 +1,30 @@
-import React, { FC, useContext, useMemo, useState } from "react";
+import React, { FC, useContext, useMemo, useState } from "react"
 
-import { t, SupportedLocales } from "./translate";
+import { t, SupportedLocales } from "./translate"
 
-const isJa = navigator.language.startsWith("ja");
-const defaultLang: SupportedLocales = isJa ? "ja" : "en";
+const isJa = navigator.language.startsWith("ja")
+const defaultLang: SupportedLocales = isJa ? "ja" : "en"
 
 type ContextState = {
-  val: SupportedLocales;
-  setter: (lang: SupportedLocales) => void;
-};
+  val: SupportedLocales
+  setter: (lang: SupportedLocales) => void
+}
 
-const TContext = React.createContext<ContextState>(null as any);
+const TContext = React.createContext<ContextState>(null as any)
 
 export const useTranslate = () => {
-  const { val, setter } = useContext(TContext);
+  const { val, setter } = useContext(TContext)
 
   return {
     t: (key: string) => t(key, val),
     lang: val,
     setLang: setter,
-  };
-};
+  }
+}
 
 export const TranslationProvider: FC<unknown> = (props) => {
-  const [locale, setLocale] = useState(defaultLang);
+  const [locale, setLocale] = useState(defaultLang)
   // re-renderを抑えるため
-  const ctx = useMemo(() => ({ val: locale, setter: setLocale }), [
-    locale,
-    setLocale,
-  ]);
-  return <TContext.Provider value={ctx}>{props.children}</TContext.Provider>;
-};
+  const ctx = useMemo(() => ({ val: locale, setter: setLocale }), [locale, setLocale])
+  return <TContext.Provider value={ctx}>{props.children}</TContext.Provider>
+}
