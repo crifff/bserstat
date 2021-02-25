@@ -20,7 +20,7 @@ const About: FC = (prop) => {
               <li>公式のデータが更新されてからBS:ER statに反映されるまでに時間差があります。</li>
             </ul>
           </Paragraph>
-          <Title level={2}>開発について</Title>P
+          <Title level={2}>開発について</Title>
           <Paragraph>
             開発はgithub(<a href="https://github.com/crifff/bserstat">https://github.com/crifff/bserstat</a>
             )上で行われています。
