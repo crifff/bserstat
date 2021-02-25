@@ -23,7 +23,12 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "check:type": "tsc --noEmit",
+    "check:lint": "eslint .",
+    "check:style": "prettier -c src/",
+    "check:all": "yarn check:type && yarn check:lint && yarn check:style",
+    "format": "yarn check:style --write && yarn check:lint"
   },
   "eslintConfig": {
     "extends": [
@@ -45,6 +50,7 @@
   },
   "devDependencies": {
     "@types/gtag.js": "^0.0.4",
-    "@types/react-router-dom": "^5.1.7"
+    "@types/react-router-dom": "^5.1.7",
+    "prettier": "^2.2.1"
   }
 }
