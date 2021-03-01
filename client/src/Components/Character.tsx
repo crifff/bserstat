@@ -221,6 +221,9 @@ function Character(prop: UserProp) {
         return
       }
       chara.RankWeaponList.forEach((weapon: any) => {
+        if (weapon.Name === "") {
+          return
+        }
         uniqueWeaponTypeList.push({ text: t(weapon.Name), value: weapon.Name })
       })
     })
@@ -239,7 +242,7 @@ function Character(prop: UserProp) {
   function characterCell(text: string, record: any): any {
     return (
       <div>
-        {text !== "Base Win Rate" && (
+        {text !== "Base Win Rate" && text !== "All Melee" &&text !== "All Ranged" &&(
           <img className={"thumbnail-character"} src={`/images/characters/${text}.png`} alt={text} width={30} />
         )}
 
