@@ -147,6 +147,7 @@ const dictionary_ja = new Map<string, string>([
   ["Harpe", "ハルペー"],
   ["Divine Dual Swords", "二天一流"],
   ["Starsteel Dual Swords", "雌雄一対の剣"],
+  ["Starsteel Twin Swords", "雌雄一対の剣"],
   ["Dioscuri", "ディオスクロイ"],
   ["Lloigor & Zahr", "ロイガーツァール"],
   ["Carnwennan", "カルンウェナン"],
@@ -222,6 +223,7 @@ const dictionary_ja = new Map<string, string>([
   ["Bucephalus", "ブケパロス"],
   ["EOD Boots", "EODシューズ"],
   ["White Rhinos", "クリングオンブーツ"],
+  ["Tachyon Brace", "タキオンブレイス"],
   ["Glacial Shoes", "グレイシャルシューズ"],
   ["Boots of Hermes", "エルメスのブーツ"],
   ["Red Shoes", "赤い靴"],
@@ -236,11 +238,14 @@ const dictionary_ja = new Map<string, string>([
   ["White Crane Fan", "白羽扇"],
   ["Magazine", "弾倉"],
   ["Flower of Fate", "運命の花"],
+  ["Revenge of Goujian", "戉王鳩淺"],
   ["Revenge of Goujin", "戉王鳩淺"],
   ["Feather Duster", "埃払い"],
   ["Tindalos Band", "ティンダロスの腕輪"],
   ["Sniper Scope", "狙撃スコープ"],
   ["Buccaneer Doubloon", "海賊の証票"],
-])
+  ["Buccaneer Doubloon", "海賊の証票"],
+  ["Lunar Embrace", "邀明月"],
+]);
 
 export { dictionary_ja }

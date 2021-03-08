@@ -157,14 +157,16 @@ function Weapon(prop: Props) {
           const tmp3: any = tmp2.WeaponList.find((el: any) => {
             return el.Name === record.weaponName
           })
-          // console.log("tmp2: ", tmp2)
-          const tmp4: any = tmp3.ModeList.find((el: any) => {
-            return el.Mode === mode
-          })
-          if (tmp4.hasOwnProperty(column)) {
-            // console.log("winrate: ", tmp3[column])
-            old = tmp4[column]
+          if (tmp3 !== undefined) {
+            const tmp4: any = tmp3.ModeList.find((el: any) => {
+              return el.Mode === mode
+            });
+            if (tmp4.hasOwnProperty(column)) {
+              // console.log("winrate: ", tmp3[column])
+              old = tmp4[column]
+            }
           }
+
         }
       }
       return valueRender(text, old, isRawNumber, isReverseColor)
