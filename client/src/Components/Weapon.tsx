@@ -245,7 +245,7 @@ function Weapon(prop: Props) {
     return (
       <div>
         {text !== "Base Win Rate" && (
-          <img className={"thumbnail-character"} src={`/images/characters/${text}.png`} alt={text} width={30} />
+          <img className={"thumbnail-character"} src={`/images/characters/${imageName(text)}.png`} alt={text} width={30} />
         )}
 
         {textCell(text, record)}

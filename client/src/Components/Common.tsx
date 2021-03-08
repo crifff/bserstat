@@ -139,9 +139,9 @@ export function imageName(name: string): string | undefined {
   if (name === undefined) {
     return name
   }
-  name = name.trim()
+  let str = name.trim()
   if (imageNameMap.has(name)) {
-    return imageNameMap.get(name)
+    str = imageNameMap.get(name) as string
   }
-  return name.replace("'", "_").replace("&", "_").toLowerCase()
+  return str.replaceAll(/[ '&]/ig, "_").toLowerCase()
 }

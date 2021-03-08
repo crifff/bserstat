@@ -243,7 +243,7 @@ function Character(prop: UserProp) {
     return (
       <div>
         {text !== "Base Win Rate" && text !== "All Melee" &&text !== "All Ranged" &&(
-          <img className={"thumbnail-character"} src={`/images/characters/${text}.png`} alt={text} width={30} />
+          <img className={"thumbnail-character"} src={`/images/characters/${imageName(text)}.png`} alt={text} width={30} />
         )}
 
         {textCell(text, record)}
