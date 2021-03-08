@@ -143,5 +143,5 @@ export function imageName(name: string): string | undefined {
   if (imageNameMap.has(name)) {
     return imageNameMap.get(name)
   }
-  return name.replace("'", "_").replace("&", "_")
+  return name.replace("'", "_").replace("&", "_").toLowerCase()
 }

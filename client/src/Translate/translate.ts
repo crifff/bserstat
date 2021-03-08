@@ -10,7 +10,7 @@ export function t(key: string, lang: SupportedLocales): string {
     return key
   }
   key = key.trim()
-  const text = dictionary_ja.get(key)
+  const text = dictionary_ja.get(key.toLowerCase())
   if (text !== undefined) {
     return text
   }
