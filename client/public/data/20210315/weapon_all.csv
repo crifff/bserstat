@@ -1,0 +1,228 @@
+Character,Weapon Type,Weapon,Solo Win Rate,Solo Pick Rate,Duo Win Rate,Duo Pick Rate,Squad Win Rate,Squad Pick Rate
+Base Win Rate,,,5.6%,,11.1%,,16.6%,
+Adriana,Throw,Smoke Bomb,4.3%,35.5%,16.6%,28.7%,21.9%,25.7%
+Adriana,Throw,Incendiary Bomb,5.0%,47.2%,13.5%,54.5%,19.0%,57.4%
+Adriana,Throw,David's Sling,4.3%,0.7%,8.4%,0.8%,21.7%,1.5%
+Adriana,Throw,Grenade of Antioch,7.1%,1.6%,13.2%,1.3%,19.3%,0.9%
+Adriana,Throw,Ruthenium Marble,6.3%,2.6%,16.5%,4.3%,24.3%,4.8%
+Adela,Rapier,Durendal Mk2,3.8%,19.6%,9.8%,8.6%,14.1%,8.0%
+Adela,Rapier,Mistilteinn,4.1%,48.3%,11.8%,63.5%,18.4%,66.4%
+Adela,Rapier,Volticletto,2.8%,12.1%,8.0%,9.7%,13.5%,8.8%
+Adela,Rapier,Meteor Claymore,23.9%,1.4%,-9999900.0%,0.3%,-9999900.0%,0.3%
+Adela,Rapier,Joyeuse,21.4%,2.5%,35.2%,1.2%,51.2%,1.4%
+Aya,Assault Rifle,AK-12,2.5%,13.1%,10.4%,27.2%,14.5%,33.2%
+Aya,Assault Rifle,XCR,10.8%,49.1%,14.4%,28.9%,20.5%,23.9%
+Aya,Assault Rifle,Gatling Gun,5.1%,16.5%,12.1%,25.1%,16.5%,24.9%
+Aya,Pistol,Devil's Marksman,4.9%,50.5%,11.6%,65.7%,18.4%,66.5%
+Aya,Pistol,Elegance,4.2%,27.6%,10.5%,17.3%,14.0%,17.3%
+Aya,Pistol,Electron Blaster,2.1%,1.7%,7.6%,1.4%,18.4%,1.0%
+Aya,Pistol,Magnum-Boa,4.8%,2.2%,10.5%,1.4%,12.9%,1.7%
+Aya,Pistol,Kelte,18.5%,5.2%,37.1%,3.6%,49.6%,3.9%
+Aya,Sniper Rifle,Tac-50,3.6%,16.6%,7.7%,7.1%,11.8%,7.1%
+Aya,Sniper Rifle,Intervention,2.5%,7.6%,11.4%,9.0%,16.0%,13.9%
+Aya,Sniper Rifle,NTW-20,2.7%,31.4%,11.0%,31.3%,16.5%,25.9%
+Aya,Sniper Rifle,Polaris,0.8%,12.5%,7.4%,22.2%,12.8%,25.6%
+Aya,Sniper Rifle,The Deadly Ray,13.7%,13.5%,22.1%,14.4%,34.3%,13.4%
+Cathy,Dagger,Carnwennan,3.3%,18.5%,6.3%,13.9%,13.9%,10.9%
+Cathy,Dagger,Mount Slicer,3.6%,0.4%,5.3%,0.5%,18.7%,1.1%
+Cathy,Dagger,Vibroblade,2.6%,63.5%,7.5%,68.7%,13.2%,71.5%
+Cathy,Dagger,Fragarach,25.7%,10.3%,42.3%,11.1%,46.5%,11.4%
+Chiara,Rapier,Durendal Mk2,3.4%,14.6%,11.8%,9.1%,13.4%,8.2%
+Chiara,Rapier,Mistilteinn,7.9%,26.4%,15.9%,28.0%,25.5%,31.1%
+Chiara,Rapier,Volticletto,3.2%,38.9%,9.9%,43.6%,15.3%,41.1%
+Chiara,Rapier,Meteor Claymore,13.3%,1.2%,-9999900.0%,0.5%,-9999900.0%,0.3%
+Chiara,Rapier,Joyeuse,16.9%,5.7%,32.3%,4.0%,34.6%,3.6%
+Emma,Shuriken,Cards of Tyranny,3.7%,3.4%,11.8%,3.2%,15.0%,2.0%
+Emma,Shuriken,Mystic Jade Charm,4.5%,3.2%,11.7%,6.6%,18.2%,6.7%
+Emma,Shuriken,Fuhma Shuriken,8.3%,27.4%,13.5%,23.2%,18.0%,22.4%
+Emma,Shuriken,Frost Venom Dart,-9999900.0%,0.0%,-9999900.0%,0.1%,-9999900.0%,0.1%
+Emma,Shuriken,Azure Dagger,3.3%,1.5%,8.0%,2.1%,7.6%,2.4%
+Emma,Shuriken,Flechette,3.3%,1.3%,8.0%,0.6%,9.9%,1.6%
+Emma,Shuriken,Wind and Fire Wheels,6.3%,48.4%,10.5%,52.8%,16.0%,53.2%
+Emma,Shuriken,Death Rune,15.1%,0.5%,-9999900.0%,0.3%,-9999900.0%,0.7%
+Emma,Shuriken,Sudarsana,21.8%,1.6%,41.1%,1.4%,50.6%,1.3%
+Emma,Shuriken,Petal Torrent,22.7%,0.5%,-9999900.0%,0.4%,-9999900.0%,0.7%
+Fiora,Rapier,Durendal Mk2,4.3%,57.8%,9.5%,57.7%,14.9%,59.6%
+Fiora,Rapier,Mistilteinn,8.8%,0.3%,-9999900.0%,0.6%,-9999900.0%,0.5%
+Fiora,Rapier,Volticletto,6.0%,17.4%,11.4%,19.0%,13.7%,15.9%
+Fiora,Rapier,Meteor Claymore,19.2%,3.2%,37.0%,2.8%,31.2%,2.4%
+Fiora,Rapier,Joyeuse,23.2%,12.2%,32.7%,11.8%,38.6%,14.4%
+Fiora,Spear,Gentian Silver Gun,1.8%,57.4%,5.4%,53.1%,10.1%,52.8%
+Fiora,Spear,Eighteen Foot Spear,2.6%,7.1%,6.2%,14.4%,12.1%,10.5%
+Fiora,Spear,Cosmic Bident,9.3%,6.2%,22.8%,4.1%,29.3%,4.1%
+Fiora,Spear,Lance of Poseidon,2.0%,1.3%,-9999900.0%,0.8%,-9999900.0%,1.5%
+Fiora,Spear,Blazing Lance,12.4%,5.9%,21.5%,6.0%,22.0%,6.4%
+Fiora,Spear,Fangtian Huaji,-9999900.0%,1.1%,-9999900.0%,1.2%,19.1%,4.8%
+Fiora,Spear,Dragon Guandao,2.6%,2.0%,3.9%,2.3%,-9999900.0%,1.8%
+Fiora,Spear,Spear of Longinus,25.8%,10.4%,50.2%,9.7%,54.8%,8.9%
+Fiora,Two Handed Sword,Thuận Thiên,1.4%,32.3%,4.7%,32.7%,5.4%,33.0%
+Fiora,Two Handed Sword,Arondight,2.4%,17.9%,7.5%,19.1%,11.7%,17.6%
+Fiora,Two Handed Sword,Excalibur,8.6%,2.7%,-9999900.0%,1.0%,-9999900.0%,2.4%
+Fiora,Two Handed Sword,Plasma Sword,0.0%,4.3%,4.0%,4.1%,-9999900.0%,4.1%
+Fiora,Two Handed Sword,Laevateinn,18.2%,20.5%,28.0%,20.5%,23.3%,23.1%
+Fiora,Two Handed Sword,Monohoshizao,5.4%,6.6%,14.1%,5.5%,13.2%,6.5%
+Fiora,Two Handed Sword,Hovud,6.6%,4.1%,15.1%,5.8%,-9999900.0%,2.9%
+Fiora,Two Handed Sword,Dáinsleif,39.6%,3.9%,46.3%,4.5%,-9999900.0%,3.8%
+Hart,Guitar,Bohemian,1.7%,4.0%,10.3%,10.5%,20.2%,15.4%
+Hart,Guitar,Stairway to Heaven,11.4%,4.5%,15.9%,3.3%,19.2%,2.2%
+Hart,Guitar,Purple Haze,6.4%,6.8%,13.6%,6.8%,24.6%,7.3%
+Hart,Guitar,Satisfaction,4.7%,17.6%,10.2%,15.0%,15.3%,13.1%
+Hart,Guitar,Wonderful Tonight,24.3%,6.1%,47.3%,4.5%,51.7%,5.0%
+Hart,Guitar,The Wall,5.0%,48.3%,11.9%,43.7%,17.3%,44.0%
+Hart,Guitar,Teen Spirit,5.2%,3.7%,15.4%,8.3%,13.6%,6.9%
+Hyejin,Bow,Ancient Bolt,-9999900.0%,0.3%,-9999900.0%,0.1%,-9999900.0%,0.1%
+Hyejin,Bow,Golden-Ratio Bow,4.3%,1.1%,10.1%,2.2%,12.2%,2.5%
+Hyejin,Bow,Twinbow,1.3%,7.1%,5.4%,7.0%,11.4%,6.9%
+Hyejin,Bow,Elemental Bow,4.6%,77.6%,14.4%,76.3%,22.3%,77.5%
+Hyejin,Bow,Failnaught,-9999900.0%,0.1%,-9999900.0%,0.2%,-9999900.0%,0.3%
+Hyejin,Shuriken,Cards of Tyranny,2.3%,11.8%,5.8%,5.5%,-9999900.0%,4.6%
+Hyejin,Shuriken,Mystic Jade Charm,4.7%,20.1%,8.8%,15.7%,21.1%,18.6%
+Hyejin,Shuriken,Fuhma Shuriken,3.8%,13.9%,9.7%,15.4%,20.5%,15.8%
+Hyejin,Shuriken,Frost Venom Dart,-9999900.0%,3.4%,-9999900.0%,1.6%,-9999900.0%,2.2%
+Hyejin,Shuriken,Azure Dagger,-9999900.0%,6.0%,10.9%,13.7%,8.9%,9.9%
+Hyejin,Shuriken,Flechette,-9999900.0%,0.4%,-9999900.0%,1.6%,-9999900.0%,0.5%
+Hyejin,Shuriken,Wind and Fire Wheels,2.4%,11.0%,9.4%,23.9%,13.7%,22.2%
+Hyejin,Shuriken,Death Rune,-9999900.0%,3.2%,-9999900.0%,0.7%,-9999900.0%,1.2%
+Hyejin,Shuriken,Sudarsana,-9999900.0%,1.2%,-9999900.0%,1.1%,-9999900.0%,2.0%
+Hyejin,Shuriken,Petal Torrent,9.7%,20.6%,19.4%,10.4%,37.0%,16.2%
+Hyunwoo,Tonfa,Tactical Tonfa,5.5%,28.6%,13.7%,21.6%,16.6%,16.9%
+Hyunwoo,Tonfa,Mai Sok,11.9%,10.9%,13.6%,9.8%,18.4%,12.6%
+Hyunwoo,Tonfa,Plasma Tonfa,6.7%,55.5%,12.5%,63.4%,17.2%,64.4%
+Hyunwoo,Glove,One Inch Punch,7.2%,33.3%,10.4%,22.5%,15.2%,23.3%
+Hyunwoo,Glove,Divine Fist,7.9%,9.6%,10.8%,10.7%,18.3%,7.8%
+Hyunwoo,Glove,Bloodwing Knuckles,4.3%,13.6%,10.3%,23.7%,16.6%,26.6%
+Hyunwoo,Glove,Frost Petal Hand,3.8%,3.7%,10.7%,5.6%,18.6%,5.0%
+Hyunwoo,Glove,Buddha's Palm,4.4%,6.1%,11.2%,5.8%,15.6%,5.2%
+Hyunwoo,Glove,Brasil Gauntlet,7.3%,19.8%,12.7%,19.1%,17.7%,20.3%
+Hyunwoo,Glove,White Claw Punch,2.7%,1.0%,8.3%,0.6%,-9999900.0%,0.3%
+Hyunwoo,Glove,Imperial Silk Gloves,14.9%,3.8%,30.0%,2.6%,37.4%,2.4%
+Isol,Assault Rifle,AK-12,5.0%,42.7%,11.7%,60.8%,17.5%,67.3%
+Isol,Assault Rifle,XCR,11.3%,33.9%,16.7%,19.9%,21.2%,14.2%
+Isol,Assault Rifle,Gatling Gun,6.4%,6.9%,14.5%,4.4%,14.5%,5.0%
+Isol,Pistol,Devil's Marksman,4.5%,10.5%,10.9%,26.3%,18.5%,33.8%
+Isol,Pistol,Elegance,5.4%,22.9%,10.6%,23.9%,14.2%,23.6%
+Isol,Pistol,Electron Blaster,4.1%,22.7%,9.7%,17.0%,14.1%,13.3%
+Isol,Pistol,Magnum-Boa,7.6%,36.3%,12.4%,23.8%,16.4%,20.5%
+Isol,Pistol,Kelte,28.2%,1.9%,34.4%,2.6%,51.2%,2.5%
+Jackie,Axe,Beam Axe,1.7%,13.8%,5.2%,12.3%,17.1%,11.2%
+Jackie,Axe,Santa Muerte,5.9%,30.8%,9.1%,24.4%,16.9%,17.5%
+Jackie,Axe,Scythe,3.9%,35.2%,11.1%,39.4%,19.5%,54.0%
+Jackie,Axe,Parashu,2.0%,11.4%,10.1%,8.2%,13.4%,6.7%
+Jackie,Axe,Harpe,2.5%,2.5%,13.1%,9.4%,23.8%,5.4%
+Jackie,Two Handed Sword,Thuận Thiên,1.4%,10.6%,3.3%,9.2%,11.8%,9.8%
+Jackie,Two Handed Sword,Arondight,3.8%,23.6%,7.6%,26.5%,16.2%,30.1%
+Jackie,Two Handed Sword,Excalibur,11.8%,10.1%,14.7%,10.3%,18.0%,7.2%
+Jackie,Two Handed Sword,Plasma Sword,-9999900.0%,1.1%,-9999900.0%,1.6%,-9999900.0%,1.6%
+Jackie,Two Handed Sword,Laevateinn,12.8%,8.6%,32.6%,9.0%,37.1%,10.0%
+Jackie,Two Handed Sword,Monohoshizao,5.5%,23.8%,9.5%,24.3%,12.7%,21.5%
+Jackie,Two Handed Sword,Hovud,5.3%,1.7%,-9999900.0%,1.7%,-9999900.0%,3.2%
+Jackie,Two Handed Sword,Dáinsleif,32.9%,4.6%,-9999900.0%,2.6%,-9999900.0%,2.6%
+Jackie,Dual Sword,Divine Dual Swords,5.3%,29.9%,7.8%,29.5%,13.4%,26.0%
+Jackie,Dual Sword,Starsteel Twin Swords,22.1%,13.7%,26.5%,7.9%,35.6%,7.5%
+Jackie,Dual Sword,Dioscuri,3.4%,46.0%,6.5%,44.8%,11.3%,38.3%
+Jackie,Dual Sword,Lloigor & Zahr,3.8%,5.2%,11.3%,14.2%,19.7%,25.2%
+Jackie,Dagger,Carnwennan,5.6%,62.1%,7.3%,53.6%,12.5%,48.1%
+Jackie,Dagger,Mount Slicer,6.7%,0.5%,8.0%,1.3%,-9999900.0%,1.9%
+Jackie,Dagger,Vibroblade,3.9%,18.4%,6.2%,26.9%,11.3%,33.5%
+Jackie,Dagger,Fragarach,24.6%,11.0%,36.3%,10.0%,37.0%,10.7%
+Lenox,Whip,Thunder Whip,-9999900.0%,0.1%,-9999900.0%,0.2%,-9999900.0%,0.3%
+Lenox,Whip,Gleipnir,4.3%,87.4%,11.8%,87.2%,17.5%,86.7%
+Lenox,Whip,Plasma Whip,0.0%,1.1%,4.5%,1.0%,8.1%,2.0%
+Lenox,Whip,Bloody Nine Tails,21.0%,3.5%,46.5%,3.7%,55.8%,3.3%
+Li Dailin,Glove,One Inch Punch,2.3%,5.2%,11.8%,5.4%,16.6%,7.6%
+Li Dailin,Glove,Divine Fist,3.5%,30.9%,9.8%,20.4%,15.5%,21.5%
+Li Dailin,Glove,Bloodwing Knuckles,2.5%,24.4%,8.2%,32.4%,12.5%,34.5%
+Li Dailin,Glove,Frost Petal Hand,4.8%,15.7%,14.9%,15.6%,19.1%,14.4%
+Li Dailin,Glove,Buddha's Palm,4.9%,0.6%,-9999900.0%,0.4%,-9999900.0%,0.5%
+Li Dailin,Glove,Brasil Gauntlet,1.1%,1.3%,6.0%,2.1%,14.0%,2.2%
+Li Dailin,Glove,White Claw Punch,2.5%,4.9%,6.3%,8.1%,18.5%,5.2%
+Li Dailin,Glove,Imperial Silk Gloves,9.5%,10.0%,28.1%,8.3%,35.4%,7.9%
+Li Dailin,Nunchaku,The Smiting Dragon,4.6%,49.5%,13.4%,50.2%,18.9%,49.7%
+Li Dailin,Nunchaku,Vibro Nunchaku,3.6%,45.1%,11.2%,44.0%,17.6%,45.1%
+Magnus,Bat,Statue of Soteria,5.2%,32.5%,5.4%,33.3%,14.2%,43.3%
+Magnus,Bat,Mallet,3.4%,36.2%,9.7%,35.3%,12.3%,24.8%
+Magnus,Bat,Spy Umbrella,4.1%,15.1%,15.9%,16.1%,15.6%,17.4%
+Magnus,Bat,Monkey King Bar,23.6%,8.9%,28.8%,5.6%,55.7%,5.0%
+Magnus,Hammer,Fang Mace,5.1%,57.0%,12.1%,51.5%,17.7%,45.6%
+Magnus,Hammer,Hammer of Dagda,5.2%,18.4%,8.6%,15.5%,13.7%,19.1%
+Magnus,Hammer,Hammer of Thor,3.4%,9.7%,10.2%,18.3%,17.1%,19.5%
+Magnus,Hammer,Magic Stick,21.3%,3.6%,40.0%,3.0%,40.3%,2.9%
+Magnus,Hammer,Evening Star,12.4%,3.8%,30.1%,1.6%,32.3%,1.9%
+Nadine,Bow,Ancient Bolt,6.6%,55.9%,11.2%,47.8%,15.4%,33.5%
+Nadine,Bow,Golden-Ratio Bow,7.7%,3.5%,13.5%,12.7%,22.1%,25.9%
+Nadine,Bow,Twinbow,5.1%,27.7%,10.0%,27.6%,15.9%,27.4%
+Nadine,Bow,Elemental Bow,-9999900.0%,0.4%,-9999900.0%,0.6%,21.4%,1.4%
+Nadine,Bow,Failnaught,30.8%,3.9%,46.0%,3.5%,54.1%,3.9%
+Nadine,Crossbow,The Legend of The General,6.1%,16.8%,7.7%,12.6%,12.0%,13.2%
+Nadine,Crossbow,Ballista,3.6%,14.8%,12.7%,11.6%,14.7%,8.9%
+Nadine,Crossbow,Sniper Crossbow,5.5%,17.0%,8.5%,26.1%,15.4%,28.1%
+Nadine,Crossbow,The Golden Ghost,5.8%,35.1%,9.5%,33.0%,15.3%,31.6%
+Nadine,Crossbow,Sharanga,31.5%,5.7%,45.3%,6.2%,40.9%,8.4%
+Rozzi,Pistol,Devil's Marksman,4.1%,0.2%,-9999900.0%,0.2%,-9999900.0%,0.1%
+Rozzi,Pistol,Elegance,4.1%,0.5%,6.8%,0.7%,10.1%,0.9%
+Rozzi,Pistol,Electron Blaster,4.2%,74.0%,10.4%,75.9%,16.0%,78.5%
+Rozzi,Pistol,Magnum-Boa,5.9%,10.3%,11.2%,9.8%,17.8%,8.0%
+Rozzi,Pistol,Kelte,23.9%,3.2%,41.5%,4.4%,47.0%,5.3%
+Shoichi,Dagger,Carnwennan,0.0%,0.3%,-9999900.0%,0.3%,-9999900.0%,0.2%
+Shoichi,Dagger,Mount Slicer,3.7%,88.0%,12.5%,87.9%,18.5%,87.8%
+Shoichi,Dagger,Vibroblade,0.8%,1.0%,12.0%,1.6%,23.1%,2.5%
+Shoichi,Dagger,Fragarach,13.0%,0.5%,39.3%,1.0%,32.3%,1.1%
+Silvia,Pistol,Devil's Marksman,3.7%,37.3%,10.1%,33.1%,14.9%,29.8%
+Silvia,Pistol,Elegance,3.8%,6.9%,8.5%,4.6%,21.1%,6.4%
+Silvia,Pistol,Electron Blaster,3.1%,17.8%,8.6%,25.7%,13.4%,23.1%
+Silvia,Pistol,Magnum-Boa,5.5%,20.9%,11.4%,18.4%,15.5%,25.1%
+Silvia,Pistol,Kelte,20.1%,6.3%,41.4%,6.8%,43.5%,5.5%
+Sissela,Shuriken,Cards of Tyranny,1.2%,6.3%,6.3%,2.4%,15.4%,1.6%
+Sissela,Shuriken,Mystic Jade Charm,3.7%,1.9%,11.1%,2.6%,19.8%,3.4%
+Sissela,Shuriken,Fuhma Shuriken,3.7%,1.2%,5.7%,1.9%,15.7%,2.0%
+Sissela,Shuriken,Frost Venom Dart,0.0%,8.2%,0.3%,4.6%,2.1%,3.9%
+Sissela,Shuriken,Azure Dagger,0.4%,1.9%,7.7%,1.3%,6.9%,1.4%
+Sissela,Shuriken,Flechette,3.7%,0.6%,9.1%,0.8%,16.4%,1.6%
+Sissela,Shuriken,Wind and Fire Wheels,3.5%,36.1%,10.2%,57.6%,16.5%,59.3%
+Sissela,Shuriken,Death Rune,7.0%,0.9%,17.3%,1.0%,25.6%,1.1%
+Sissela,Shuriken,Sudarsana,21.1%,1.7%,46.7%,1.7%,41.3%,1.7%
+Sissela,Shuriken,Petal Torrent,8.2%,27.4%,19.7%,15.5%,26.7%,14.1%
+Sissela,Throw,Smoke Bomb,-9999900.0%,0.1%,-9999900.0%,0.0%,-9999900.0%,0.1%
+Sissela,Throw,Incendiary Bomb,1.7%,26.1%,12.3%,29.2%,17.5%,27.4%
+Sissela,Throw,David's Sling,3.2%,24.6%,8.6%,35.1%,20.6%,37.4%
+Sissela,Throw,Grenade of Antioch,9.0%,9.7%,-9999900.0%,1.6%,-9999900.0%,1.8%
+Sissela,Throw,Ruthenium Marble,8.0%,25.9%,17.1%,21.0%,21.9%,21.5%
+Xiukai,Spear,Gentian Silver Gun,0.7%,5.8%,5.6%,7.3%,11.4%,11.4%
+Xiukai,Spear,Eighteen Foot Spear,-9999900.0%,0.0%,-9999900.0%,0.0%,-9999900.0%,0.1%
+Xiukai,Spear,Cosmic Bident,-9999900.0%,0.0%,-9999900.0%,0.1%,-9999900.0%,0.0%
+Xiukai,Spear,Lance of Poseidon,5.9%,9.3%,12.0%,19.4%,15.8%,23.8%
+Xiukai,Spear,Blazing Lance,-9999900.0%,0.0%,-9999900.0%,0.2%,-9999900.0%,0.1%
+Xiukai,Spear,Fangtian Huaji,12.5%,64.1%,17.3%,49.8%,21.7%,44.5%
+Xiukai,Spear,Dragon Guandao,4.9%,1.4%,11.4%,5.0%,15.3%,5.6%
+Xiukai,Spear,Spear of Longinus,-9999900.0%,0.1%,-9999900.0%,0.1%,-9999900.0%,0.2%
+Xiukai,Dagger,Carnwennan,1.9%,5.6%,4.1%,7.4%,14.0%,9.4%
+Xiukai,Dagger,Mount Slicer,9.3%,81.9%,13.3%,77.8%,17.5%,76.4%
+Xiukai,Dagger,Vibroblade,-9999900.0%,0.7%,-9999900.0%,1.0%,-9999900.0%,0.7%
+Xiukai,Dagger,Fragarach,-9999900.0%,0.1%,-9999900.0%,0.1%,-9999900.0%,0.5%
+Yuki,Two Handed Sword,Thuận Thiên,1.9%,8.0%,6.1%,9.5%,11.9%,12.1%
+Yuki,Two Handed Sword,Arondight,3.6%,51.4%,8.3%,50.3%,13.3%,46.9%
+Yuki,Two Handed Sword,Excalibur,12.6%,2.3%,14.1%,3.4%,18.7%,5.3%
+Yuki,Two Handed Sword,Plasma Sword,0.5%,4.4%,3.4%,5.1%,8.5%,4.8%
+Yuki,Two Handed Sword,Laevateinn,18.8%,17.6%,30.3%,15.5%,36.4%,15.9%
+Yuki,Two Handed Sword,Monohoshizao,6.3%,1.9%,10.4%,1.7%,15.3%,1.3%
+Yuki,Two Handed Sword,Hovud,6.6%,5.1%,12.7%,5.6%,19.2%,5.6%
+Yuki,Two Handed Sword,Dáinsleif,29.9%,0.9%,45.3%,1.0%,55.1%,1.0%
+Yuki,Dual Swords,Divine Dual Swords,3.7%,13.9%,8.2%,8.0%,15.3%,6.4%
+Yuki,Dual Swords,Starsteel Twin Swords,13.1%,5.0%,25.0%,2.1%,31.4%,1.8%
+Yuki,Dual Swords,Dioscuri,1.9%,10.9%,7.3%,7.1%,12.6%,5.3%
+Yuki,Dual Swords,Lloigor & Zahr,5.0%,64.6%,13.0%,79.1%,18.7%,83.1%
+Zahir,Throw,Smoke Bomb,-9999900.0%,0.0%,-9999900.0%,0.0%,-9999900.0%,0.0%
+Zahir,Throw,Incendiary Bomb,-9999900.0%,0.3%,-9999900.0%,0.3%,-9999900.0%,0.3%
+Zahir,Throw,David's Sling,-9999900.0%,0.2%,-9999900.0%,0.5%,-9999900.0%,0.5%
+Zahir,Throw,Grenade of Antioch,-9999900.0%,0.0%,-9999900.0%,0.0%,-9999900.0%,0.0%
+Zahir,Throw,Ruthenium Marble,9.5%,78.3%,18.5%,80.8%,24.1%,81.1%
+Zahir,Shuriken,Cards of Tyranny,-9999900.0%,0.1%,-9999900.0%,0.1%,-9999900.0%,0.0%
+Zahir,Shuriken,Mystic Jade Charm,5.8%,46.3%,15.0%,35.3%,21.9%,38.2%
+Zahir,Shuriken,Fuhma Shuriken,-9999900.0%,0.2%,-9999900.0%,0.4%,-9999900.0%,0.3%
+Zahir,Shuriken,Frost Venom Dart,-9999900.0%,1.2%,-9999900.0%,0.9%,5.8%,2.4%
+Zahir,Shuriken,Azure Dagger,4.8%,22.8%,9.2%,33.0%,14.8%,31.8%
+Zahir,Shuriken,Flechette,-9999900.0%,0.5%,-9999900.0%,0.0%,-9999900.0%,0.1%
+Zahir,Shuriken,Wind and Fire Wheels,6.3%,11.1%,13.5%,16.3%,21.1%,12.2%
+Zahir,Shuriken,Death Rune,7.7%,1.6%,-9999900.0%,1.7%,-9999900.0%,1.2%
+Zahir,Shuriken,Sudarsana,-9999900.0%,1.1%,-9999900.0%,1.6%,-9999900.0%,1.6%
+Zahir,Shuriken,Petal Torrent,9.8%,3.4%,29.0%,2.5%,26.9%,3.6%
