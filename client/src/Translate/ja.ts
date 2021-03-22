@@ -154,6 +154,7 @@ const dictionary_ja = new Map<string, string>([
   ["carnwennan", "カルンウェナン"],
   ["mount slicer", "破山剣"],
   ["vibroblade", "超振動ナイフ"],
+  ["damascus steel thorn", "ダマスカス鋼の棘"],
   ["fragarach", "フラガラック"],
   ["thunder whip", "雷龍鞭"],
   ["gleipnir", "グレイプニル"],
