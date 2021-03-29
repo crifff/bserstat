@@ -43,6 +43,7 @@ const dictionary_ja = new Map<string, string>([
   ["luke", "ルク"],
   ["cathy", "キャッシー"],
   ["adela", "アデラ"],
+  ["bernice", "バニス"],
   ["all melee", "近距離全体"],
   ["all ranged", "遠距離全体"],
   ["base win rate", "基準勝率"],
