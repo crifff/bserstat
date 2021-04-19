@@ -112,21 +112,21 @@ const Header: FC = (prop): any => {
           <Menu.Item key="character_all">
             <Link to="/character/all">{t("Character(All)")}</Link>
           </Menu.Item>
-          <Menu.Item key="character_high">
-            <Link to="/character/high">{t("Character(High Tier)")}</Link>
-          </Menu.Item>
+          {/*<Menu.Item key="character_high">*/}
+          {/*  <Link to="/character/high">{t("Character(High Tier)")}</Link>*/}
+          {/*</Menu.Item>*/}
           <Menu.Item key="weapon_all">
             <Link to="/weapon/all">{t("Weapon(All)")}</Link>
           </Menu.Item>
-          <Menu.Item key="weapon_high">
-            <Link to="/weapon/high">{t("Weapon(High Tier)")}</Link>
-          </Menu.Item>
+          {/*<Menu.Item key="weapon_high">*/}
+          {/*  <Link to="/weapon/high">{t("Weapon(High Tier)")}</Link>*/}
+          {/*</Menu.Item>*/}
           <Menu.Item key="armor_all">
             <Link to="/armor/all">{t("Armor(All)")}</Link>
           </Menu.Item>
-          <Menu.Item key="armor_high">
-            <Link to="/armor/high">{t("Armor(High Tier)")}</Link>
-          </Menu.Item>
+          {/*<Menu.Item key="armor_high">*/}
+          {/*  <Link to="/armor/high">{t("Armor(High Tier)")}</Link>*/}
+          {/*</Menu.Item>*/}
         </Menu>
       </Col>
       <Col flex="auto" style={{ textAlign: "right", paddingRight: "1rem" }}>
