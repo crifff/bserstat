@@ -150,23 +150,25 @@ function Weapon(prop: Props) {
         const tmp1: any = oldJson.CharacterList.find((el: any) => {
           return el.Name === record.characterName
         })
-        if (tmp1 !== undefined) {
+        if (tmp1 !== undefined && tmp1.WeaponTypeList !== null) {
+          console.log(tmp1.Name, tmp1.WeaponTypeList)
           const tmp2: any = tmp1.WeaponTypeList.find((el: any) => {
             return el.Name === record.weaponTypeName
           })
-          const tmp3: any = tmp2.WeaponList.find((el: any) => {
-            return el.Name === record.weaponName
-          })
-          if (tmp3 !== undefined) {
-            const tmp4: any = tmp3.ModeList.find((el: any) => {
-              return el.Mode === mode
-            });
-            if (tmp4.hasOwnProperty(column)) {
-              // console.log("winrate: ", tmp3[column])
-              old = tmp4[column]
+          if (tmp2 !== undefined) {
+            const tmp3: any = tmp2.WeaponList.find((el: any) => {
+              return el.Name === record.weaponName
+            })
+            if (tmp3 !== undefined) {
+              const tmp4: any = tmp3.ModeList.find((el: any) => {
+                return el.Mode === mode
+              });
+              if (tmp4.hasOwnProperty(column)) {
+                // console.log("winrate: ", tmp3[column])
+                old = tmp4[column]
+              }
             }
           }
-
         }
       }
       return valueRender(text, old, isRawNumber, isReverseColor)
