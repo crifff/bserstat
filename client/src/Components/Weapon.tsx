@@ -151,7 +151,7 @@ function Weapon(prop: Props) {
           return el.Name === record.characterName
         })
         if (tmp1 !== undefined && tmp1.WeaponTypeList !== null) {
-          console.log(tmp1.Name, tmp1.WeaponTypeList)
+          // console.log(tmp1.Name, tmp1.WeaponTypeList)
           const tmp2: any = tmp1.WeaponTypeList.find((el: any) => {
             return el.Name === record.weaponTypeName
           })
